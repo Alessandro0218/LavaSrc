@@ -5,3 +5,4 @@ build
 application.yml
 logs/
 gradle.properties
+bin/
