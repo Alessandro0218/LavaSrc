@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.DataInput;
 import java.io.IOException;
+import java.io.InterruptedIOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -36,25 +37,160 @@ public class TidalSourceManager extends MirroringAudioSourceManager implements H
 
 	private final HttpInterfaceManager httpInterfaceManager;
 	private final String countryCode;
-	private final TidalApiClient client;
+	private volatile Clients clients;
+	private String token;
+	private String clientId;
+	private String clientSecret;
+	private TidalApiVersion apiVersion;
 	private int searchLimit = 6;
 
+	/**
+	 * @deprecated use {@link #TidalSourceManager(String[], String, Function, String, String, String, TidalApiVersion)}
+	 */
+	@Deprecated
 	public TidalSourceManager(String[] providers, String countryCode, Function<Void, AudioPlayerManager> audioPlayerManager, String tidalToken) {
 		this(countryCode, audioPlayerManager, new DefaultMirroringAudioTrackResolver(providers), tidalToken);
 	}
 
+	/**
+	 * Creates a source manager using the unofficial Tidal API v1.
+	 *
+	 * @deprecated use {@link #TidalSourceManager(String, Function, MirroringAudioTrackResolver, String, String, String, TidalApiVersion)}
+	 */
+	@Deprecated
 	public TidalSourceManager(String countryCode, Function<Void, AudioPlayerManager> audioPlayerManager, MirroringAudioTrackResolver mirroringAudioTrackResolver, String tidalToken) {
+		this(countryCode, audioPlayerManager, mirroringAudioTrackResolver, requireToken(tidalToken), null, null, TidalApiVersion.V1);
+	}
+
+	public TidalSourceManager(String[] providers, String countryCode, Function<Void, AudioPlayerManager> audioPlayerManager, String tidalToken, String clientId, String clientSecret, TidalApiVersion apiVersion) {
+		this(countryCode, audioPlayerManager, new DefaultMirroringAudioTrackResolver(providers), tidalToken, clientId, clientSecret, apiVersion);
+	}
+
+	/**
+	 * @param tidalToken   token for the unofficial API v1, may be null when clientId and clientSecret are set
+	 * @param clientId     client id for the official API v2 (developer.tidal.com), may be null when a token is set
+	 * @param clientSecret client secret for the official API v2, may be null when a token is set
+	 * @param apiVersion   which API to use, {@link TidalApiVersion#AUTO} prefers v2 and falls back to v1 when both are configured
+	 */
+	public TidalSourceManager(String countryCode, Function<Void, AudioPlayerManager> audioPlayerManager, MirroringAudioTrackResolver mirroringAudioTrackResolver, String tidalToken, String clientId, String clientSecret, TidalApiVersion apiVersion) {
 		super(audioPlayerManager, mirroringAudioTrackResolver);
 		this.countryCode = (countryCode == null || countryCode.isEmpty()) ? "US" : countryCode;
+		this.httpInterfaceManager = HttpClientTools.createCookielessThreadLocalManager();
+		this.update(tidalToken, clientId, clientSecret, apiVersion == null ? TidalApiVersion.AUTO : apiVersion);
+	}
+
+	// visible for testing
+	TidalSourceManager(TidalApiClient primary, TidalApiClient fallback) {
+		super((Function<Void, AudioPlayerManager>) unused -> null, null);
+		this.countryCode = "US";
+		this.httpInterfaceManager = HttpClientTools.createCookielessThreadLocalManager();
+		this.clients = new Clients(primary, fallback);
+	}
+
+	private static String requireToken(String tidalToken) {
 		if (tidalToken == null || tidalToken.isEmpty()) {
 			throw new IllegalArgumentException("Tidal token must be provided");
 		}
-		this.httpInterfaceManager = HttpClientTools.createCookielessThreadLocalManager();
-		this.client = new TidalV1Client(this.httpInterfaceManager, tidalToken, this.countryCode);
+		return tidalToken;
 	}
 
 	public void setSearchLimit(int searchLimit) {
 		this.searchLimit = searchLimit;
+	}
+
+	public synchronized void setToken(String token) {
+		this.update(token, this.clientId, this.clientSecret, this.apiVersion);
+	}
+
+	public synchronized void setClientIdSecret(String clientId, String clientSecret) {
+		this.update(this.token, clientId, clientSecret, this.apiVersion);
+	}
+
+	public synchronized void setApiVersion(TidalApiVersion apiVersion) {
+		this.update(this.token, this.clientId, this.clientSecret, apiVersion);
+	}
+
+	/**
+	 * @return the API version requests are sent to first
+	 */
+	public TidalApiVersion getActiveApiVersion() {
+		return this.clients.primary.getVersion();
+	}
+
+	boolean hasV1Fallback() {
+		return this.clients.fallback != null;
+	}
+
+	private synchronized void update(String token, String clientId, String clientSecret, TidalApiVersion apiVersion) {
+		// build the new clients first, so an invalid configuration leaves the current one in place
+		var clients = this.createClients(token, clientId, clientSecret, apiVersion);
+		this.clients = clients;
+		this.token = token;
+		this.clientId = clientId;
+		this.clientSecret = clientSecret;
+		this.apiVersion = apiVersion;
+		log.info("Using Tidal API {}{}", clients.primary.getVersion().name().toLowerCase(), clients.fallback != null ? " with fallback to v1" : "");
+	}
+
+	private Clients createClients(String token, String clientId, String clientSecret, TidalApiVersion apiVersion) {
+		var hasToken = token != null && !token.isBlank();
+		var hasClientCredentials = clientId != null && !clientId.isBlank() && clientSecret != null && !clientSecret.isBlank();
+
+		switch (apiVersion) {
+			case V1:
+				if (!hasToken) {
+					throw new IllegalArgumentException("Tidal apiVersion is v1 but no token is configured");
+				}
+				return new Clients(this.createV1Client(token), null);
+			case V2:
+				if (!hasClientCredentials) {
+					throw new IllegalArgumentException("Tidal apiVersion is v2 but clientId and clientSecret are not configured");
+				}
+				return new Clients(this.createV2Client(clientId, clientSecret), null);
+			default:
+				if (hasClientCredentials) {
+					return new Clients(this.createV2Client(clientId, clientSecret), hasToken ? this.createV1Client(token) : null);
+				}
+				if (hasToken) {
+					if ((clientId != null && !clientId.isBlank()) || (clientSecret != null && !clientSecret.isBlank())) {
+						log.warn("Tidal clientId and clientSecret must both be set to use API v2, using API v1");
+					}
+					return new Clients(this.createV1Client(token), null);
+				}
+				throw new IllegalArgumentException("Tidal requires either clientId and clientSecret (API v2) or a token (API v1)");
+		}
+	}
+
+	private TidalApiClient createV1Client(String token) {
+		return new TidalV1Client(this.httpInterfaceManager, token, this.countryCode);
+	}
+
+	private TidalApiClient createV2Client(String clientId, String clientSecret) {
+		return new TidalV2Client(this.httpInterfaceManager, new TidalV2TokenManager(this.httpInterfaceManager, clientId, clientSecret), this.countryCode);
+	}
+
+	/**
+	 * Runs the call against the primary client. When v2 fails for a reason unrelated to the resource
+	 * (server error, authentication, rate limit, network) and a v1 token is configured, the call is retried on v1.
+	 */
+	private <T> T call(ApiCall<T> call) throws IOException {
+		var clients = this.clients;
+		try {
+			return call.apply(clients.primary);
+		} catch (IOException e) {
+			if (clients.fallback == null || !isRetryable(e)) {
+				throw e;
+			}
+			log.warn("Tidal API v2 request failed ({}), retrying with API v1", e.getMessage());
+			return call.apply(clients.fallback);
+		}
+	}
+
+	static boolean isRetryable(IOException e) {
+		if (e instanceof TidalApiException) {
+			return ((TidalApiException) e).isRetryable();
+		}
+		return !(e instanceof InterruptedIOException);
 	}
 
 	@Override
@@ -112,7 +248,7 @@ public class TidalSourceManager extends MirroringAudioSourceManager implements H
 	}
 
 	private AudioItem getSearch(String query) throws IOException {
-		var tracks = this.buildTracks(this.client.search(query, this.searchLimit));
+		var tracks = this.buildTracks(this.call(client -> client.search(query, this.searchLimit)));
 		if (tracks.isEmpty()) {
 			return AudioReference.NO_TRACK;
 		}
@@ -120,7 +256,7 @@ public class TidalSourceManager extends MirroringAudioSourceManager implements H
 	}
 
 	private AudioItem getRecommendations(String trackId) throws IOException {
-		var mixId = this.client.getTrackMixId(trackId);
+		var mixId = this.call(client -> client.getTrackMixId(trackId));
 		if (mixId == null) {
 			return AudioReference.NO_TRACK;
 		}
@@ -128,9 +264,9 @@ public class TidalSourceManager extends MirroringAudioSourceManager implements H
 	}
 
 	private AudioItem getAlbumOrPlaylist(String itemId, ExtendedAudioPlaylist.Type type) throws IOException {
-		var collection = type == ExtendedAudioPlaylist.Type.PLAYLIST
-			? this.client.getPlaylist(itemId, PLAYLIST_MAX_PAGE_ITEMS)
-			: this.client.getAlbum(itemId, ALBUM_MAX_PAGE_ITEMS);
+		var collection = this.call(client -> type == ExtendedAudioPlaylist.Type.PLAYLIST
+			? client.getPlaylist(itemId, PLAYLIST_MAX_PAGE_ITEMS)
+			: client.getAlbum(itemId, ALBUM_MAX_PAGE_ITEMS));
 		if (collection == null || collection.name == null || collection.url == null) {
 			return AudioReference.NO_TRACK;
 		}
@@ -143,7 +279,7 @@ public class TidalSourceManager extends MirroringAudioSourceManager implements H
 	}
 
 	public AudioItem getTrack(String trackId) throws IOException {
-		var data = this.client.getTrack(trackId);
+		var data = this.call(client -> client.getTrack(trackId));
 		if (data == null || data.durationMs <= 0) {
 			return AudioReference.NO_TRACK;
 		}
@@ -151,7 +287,7 @@ public class TidalSourceManager extends MirroringAudioSourceManager implements H
 	}
 
 	public AudioItem getMix(String mixId) throws IOException {
-		var tracks = this.buildTracks(this.client.getMix(mixId, PLAYLIST_MAX_PAGE_ITEMS));
+		var tracks = this.buildTracks(this.call(client -> client.getMix(mixId, PLAYLIST_MAX_PAGE_ITEMS)));
 		if (tracks.isEmpty()) {
 			return AudioReference.NO_TRACK;
 		}
@@ -200,5 +336,20 @@ public class TidalSourceManager extends MirroringAudioSourceManager implements H
 
 	public HttpInterface getHttpInterface() {
 		return httpInterfaceManager.getInterface();
+	}
+
+	@FunctionalInterface
+	private interface ApiCall<T> {
+		T apply(TidalApiClient client) throws IOException;
+	}
+
+	private static final class Clients {
+		final TidalApiClient primary;
+		final TidalApiClient fallback;
+
+		Clients(TidalApiClient primary, TidalApiClient fallback) {
+			this.primary = primary;
+			this.fallback = fallback;
+		}
 	}
 }
