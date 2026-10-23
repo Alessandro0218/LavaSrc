@@ -183,7 +183,11 @@ plugins:
     tidal:
       countryCode: "US" # the country code for accessing region-specific content on Tidal (ISO 3166-1 alpha-2).
       searchLimit: 6 # How many search results should be returned
-      token: "your tidal token" # the token used for accessing the tidal api. See https://github.com/topi314/LavaSrc#tidal
+      # Configure clientId & clientSecret (official API v2), token (unofficial API v1) or both. See https://github.com/topi314/LavaSrc#tidal
+      clientId: "your client id" # client id of your app on https://developer.tidal.com (API v2)
+      clientSecret: "your client secret" # client secret of your app on https://developer.tidal.com (API v2)
+      token: "your tidal token" # the token used for accessing the unofficial tidal api v1
+      apiVersion: "auto" # auto | v1 | v2. auto uses v2 when clientId & clientSecret are set (falling back to v1 on errors if a token is set), otherwise v1
     qobuz:
       userOauthToken : "your user oauth token" # This token is needed for authorization in the api. Guide: https://github.com/topi314/LavaSrc#qobuz
       #      appId : optional (Only pass it when you are using an old userOauthToken)
@@ -311,6 +315,7 @@ PATCH /v4/lavasrc/config
 | ?deezer      | [Deezer Config](#deezer-config-object)             | The Deezer settings       |
 | ?yandexMusic | [Yandex Music Config](#yandex-music-config-object) | The Yandex Music settings |
 | ?vkMusic     | [Vk Music Config](#vk-music-config-object)         | The Vk Music settings     |
+| ?tidal       | [Tidal Config](#tidal-config-object)               | The Tidal settings        |
 | ?qobuz       | [Qobuz Config](#qobuz-config-object)               | The Qobuz settings        |
 | ?ytdlp       | [Ytdlp Config](#ytdlp-config-object)               | The yt-dlp settings       |
 
@@ -360,6 +365,17 @@ PATCH /v4/lavasrc/config
 | Field      | Type   | Description             |
 |------------|--------|-------------------------|
 | ?userToken | string | The Vk Music user token |
+
+##### Tidal Config Object
+
+| Field         | Type   | Description                                                  |
+|---------------|--------|--------------------------------------------------------------|
+| ?token        | string | The token for the unofficial Tidal API v1                    |
+| ?clientId     | string | The client id for the official Tidal API v2                  |
+| ?clientSecret | string | The client secret for the official Tidal API v2              |
+| ?apiVersion   | string | Which API to use: `auto`, `v1` or `v2`                       |
+
+`clientId` and `clientSecret` are only applied when both are set. The fields are applied in the order listed, and a combination that leaves the selected API without credentials is rejected.
 
 #### Qobuz Config Object
 
@@ -412,6 +428,12 @@ PATCH /v4/lavasrc/config
   },
   "vkMusic": {
     "userToken": "your user token"
+  },
+  "tidal": {
+    "token": "your tidal token",
+    "clientId": "your client id",
+    "clientSecret": "your client secret",
+    "apiVersion": "auto"
   },
   "qobuz": {
     "userOauthToken": "your user token",
@@ -796,8 +818,33 @@ searchManager.registerSearchManager(vkMusic);
 
 ### Tidal
 
+Tidal is a [mirroring](#what-is-mirroring) source: only metadata (most importantly the ISRC) is read from Tidal, the audio is resolved through your `providers`.
+Two APIs are supported and can be configured side by side:
+
+| `apiVersion` | API                                                       | Credentials                  |
+|--------------|-----------------------------------------------------------|------------------------------|
+| `v2`         | Official [TIDAL API](https://developer.tidal.com) (v2)    | `clientId` + `clientSecret`  |
+| `v1`         | Unofficial `api.tidal.com/v1` API                         | `token`                      |
+| `auto`       | `v2` when `clientId` and `clientSecret` are set, otherwise `v1`. With both configured, requests that fail on v2 for reasons unrelated to the requested item (server errors, authentication, rate limiting, network) are retried on v1. | any of the above |
+
+A config that only sets `token` keeps working exactly as before.
+
+> [!WARNING]
+> API v1 is not an official API. It is undocumented, may change or stop working at any time, and its use may not be permitted by Tidal's terms. Prefer the official API v2 where possible.
+
 <details>
-<summary>How to get tidal token</summary>
+<summary>How to get the clientId and clientSecret (API v2)</summary>
+
+1. Sign in at [developer.tidal.com](https://developer.tidal.com).
+2. Open the **Dashboard** and create a new app.
+3. Copy the **Client ID** and **Client Secret** from the app's overview page.
+
+LavaSrc uses the OAuth 2.0 client credentials flow, so no user login or redirect URI is needed. The access token is renewed automatically.
+
+</details>
+
+<details>
+<summary>How to get tidal token (API v1)</summary>
 
 Use Google to get the tidal token.
 
@@ -806,8 +853,8 @@ Use Google to get the tidal token.
 ```java
 AudioPlayerManager playerManager = new DefaultAudioPlayerManager();
 
-// create a new TidalSourceManager with the token and register it
-var tidal = new TidalSourceManager(countryCode, () -> playerManager, new DefaultMirroringAudioTrackResolver(providers), "your tidal token");
+// create a new TidalSourceManager using the official API v2 (pass a token as well to fall back to v1) and register it
+var tidal = new TidalSourceManager(countryCode, unused -> playerManager, new DefaultMirroringAudioTrackResolver(providers), null, "your client id", "your client secret", TidalApiVersion.AUTO);
 
 playerManager.registerSourceManager(tidal);
 ```
@@ -927,7 +974,7 @@ You can read about all the available options [here](https://flowery.pw/docs), a 
 * https://tidal.com/browse/track/12345678
 * https://tidal.com/browse/album/12345678
 * https://tidal.com/browse/playlist/12345678
-* https://tidal.com/browse/artist/12345678
+* https://tidal.com/browse/mix/001fdb7dd3214d7c96032f0c0594e1
 
 ### Qobuz
 
