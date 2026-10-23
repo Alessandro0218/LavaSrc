@@ -9,6 +9,9 @@ public class TidalConfig {
 	private String countryCode;
 	private int searchLimit;
 	private String token;
+	private String clientId;
+	private String clientSecret;
+	private String apiVersion = "auto";
 
 	public String getCountryCode() {
 		return this.countryCode;
@@ -32,5 +35,29 @@ public class TidalConfig {
 
 	public void setToken(String token) {
 		this.token = token;
+	}
+
+	public String getClientId() {
+		return this.clientId;
+	}
+
+	public void setClientId(String clientId) {
+		this.clientId = clientId;
+	}
+
+	public String getClientSecret() {
+		return this.clientSecret;
+	}
+
+	public void setClientSecret(String clientSecret) {
+		this.clientSecret = clientSecret;
+	}
+
+	public String getApiVersion() {
+		return this.apiVersion;
+	}
+
+	public void setApiVersion(String apiVersion) {
+		this.apiVersion = apiVersion;
 	}
 }

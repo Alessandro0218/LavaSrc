@@ -16,6 +16,7 @@ import com.github.topi314.lavasrc.plugin.service.ProxyConfigurationService;
 import com.github.topi314.lavasrc.protocol.Config;
 import com.github.topi314.lavasrc.qobuz.QobuzAudioSourceManager;
 import com.github.topi314.lavasrc.spotify.SpotifySourceManager;
+import com.github.topi314.lavasrc.tidal.TidalApiVersion;
 import com.github.topi314.lavasrc.tidal.TidalSourceManager;
 import com.github.topi314.lavasrc.vkmusic.VkMusicSourceManager;
 import com.github.topi314.lavasrc.yandexmusic.YandexMusicSourceManager;
@@ -160,7 +161,7 @@ public class LavaSrcPlugin implements AudioPlayerManagerConfiguration, SearchMan
 			}
 		}
 		if (sourcesConfig.isTidal()) {
-			this.tidal = new TidalSourceManager(pluginConfig.getProviders(), tidalConfig.getCountryCode(), unused -> this.manager, tidalConfig.getToken());
+			this.tidal = new TidalSourceManager(pluginConfig.getProviders(), tidalConfig.getCountryCode(), unused -> this.manager, tidalConfig.getToken(), tidalConfig.getClientId(), tidalConfig.getClientSecret(), TidalApiVersion.fromString(tidalConfig.getApiVersion()));
 			if (tidalConfig.getSearchLimit() > 0) {
 				this.tidal.setSearchLimit(tidalConfig.getSearchLimit());
 			}
@@ -354,6 +355,19 @@ public class LavaSrcPlugin implements AudioPlayerManagerConfiguration, SearchMan
 		if (vkMusicConfig != null && this.vkMusic != null) {
 			if (vkMusicConfig.getUserToken() != null) {
 				this.vkMusic.setUserToken(vkMusicConfig.getUserToken());
+			}
+		}
+
+		var tidalConfig = config.getTidal();
+		if (tidalConfig != null && this.tidal != null) {
+			if (tidalConfig.getToken() != null) {
+				this.tidal.setToken(tidalConfig.getToken());
+			}
+			if (tidalConfig.getClientId() != null && tidalConfig.getClientSecret() != null) {
+				this.tidal.setClientIdSecret(tidalConfig.getClientId(), tidalConfig.getClientSecret());
+			}
+			if (tidalConfig.getApiVersion() != null) {
+				this.tidal.setApiVersion(TidalApiVersion.fromString(tidalConfig.getApiVersion()));
 			}
 		}
 
