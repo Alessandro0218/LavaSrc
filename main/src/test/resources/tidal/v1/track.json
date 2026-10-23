@@ -1,0 +1,19 @@
+{
+  "id": 75413016,
+  "title": "Kill Jay Z",
+  "duration": 178,
+  "isrc": "QMJMT1701229",
+  "url": "http://www.tidal.com/track/75413016",
+  "artists": [
+    {"id": 7804, "name": "JAY Z"},
+    {"id": 1566, "name": "Beyonce"}
+  ],
+  "album": {
+    "id": 75413011,
+    "title": "4:44",
+    "cover": "7c298a27-caec-4058-9a7b-5f34cfd2c857"
+  },
+  "mixes": {
+    "TRACK_MIX": "001fdb7dd3214d7c96032f0c0594e1"
+  }
+}

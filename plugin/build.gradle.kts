@@ -35,6 +35,8 @@ tasks {
 	jar {
 		exclude("dev/schlaubi/lyrics/LyricsClient*")
 		exclude("dev/schlaubi/lyrics/Lyrics_jvmKt.class")
+		// the lavalink plugin bundles :main from its build/classes dir (main classes only), so only order the test compilation before it
+		mustRunAfter(":main:compileTestJava", ":main:compileTestKotlin")
 	}
 }
 

@@ -1,0 +1,43 @@
+{
+  "limit": 100,
+  "offset": 0,
+  "totalNumberOfItems": 3,
+  "items": [
+    {
+      "type": "track",
+      "item": {
+        "id": 75413016,
+        "title": "Kill Jay Z",
+        "duration": 178,
+        "isrc": "QMJMT1701229",
+        "url": "http://www.tidal.com/track/75413016",
+        "artists": [{"id": 7804, "name": "JAY Z"}],
+        "album": {"id": 75413011, "cover": "7c298a27-caec-4058-9a7b-5f34cfd2c857"}
+      }
+    },
+    {
+      "type": "track",
+      "item": {
+        "id": 1,
+        "title": "Unavailable",
+        "duration": 0,
+        "isrc": null,
+        "url": "http://www.tidal.com/track/1",
+        "artists": [],
+        "album": {"id": 2, "cover": null}
+      }
+    },
+    {
+      "type": "track",
+      "item": {
+        "id": 3,
+        "title": "No Cover",
+        "duration": 61,
+        "isrc": "USAAA0000001",
+        "url": "http://www.tidal.com/track/3",
+        "artists": [{"id": 4, "name": "Someone"}],
+        "album": {"id": 5, "cover": null}
+      }
+    }
+  ]
+}

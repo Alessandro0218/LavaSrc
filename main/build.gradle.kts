@@ -26,6 +26,11 @@ dependencies {
     implementation("com.auth0:java-jwt:4.4.0")
     compileOnly("org.slf4j:slf4j-api:2.0.7")
 
+    testImplementation("dev.arbjerg:lavaplayer:2.0.4")
+    testImplementation("org.slf4j:slf4j-api:2.0.7")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
     lyricsDependency("protocol")
     lyricsDependency("client")
 }
@@ -43,6 +48,10 @@ publishing {
 
 kotlin {
     jvmToolchain(11)
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
 
 fun DependencyHandlerScope.lyricsDependency(module: String) {
