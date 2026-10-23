@@ -183,11 +183,10 @@ plugins:
     tidal:
       countryCode: "US" # the country code for accessing region-specific content on Tidal (ISO 3166-1 alpha-2).
       searchLimit: 6 # How many search results should be returned
-      # Configure clientId & clientSecret (official API v2), token (unofficial API v1) or both. See https://github.com/topi314/LavaSrc#tidal
-      clientId: "your client id" # client id of your app on https://developer.tidal.com (API v2)
-      clientSecret: "your client secret" # client secret of your app on https://developer.tidal.com (API v2)
-      token: "your tidal token" # the token used for accessing the unofficial tidal api v1
-      apiVersion: "auto" # auto | v1 | v2. auto uses v2 when clientId & clientSecret are set (falling back to v1 on errors if a token is set), otherwise v1
+      clientId: "your client id" # API v2, from https://developer.tidal.com. See https://github.com/topi314/LavaSrc#tidal
+      clientSecret: "your client secret" # API v2
+      token: "your tidal token" # unofficial API v1
+      apiVersion: "auto" # auto | v1 | v2
     qobuz:
       userOauthToken : "your user oauth token" # This token is needed for authorization in the api. Guide: https://github.com/topi314/LavaSrc#qobuz
       #      appId : optional (Only pass it when you are using an old userOauthToken)
@@ -818,28 +817,28 @@ searchManager.registerSearchManager(vkMusic);
 
 ### Tidal
 
-Tidal is a [mirroring](#what-is-mirroring) source: only metadata (most importantly the ISRC) is read from Tidal, the audio is resolved through your `providers`.
-Two APIs are supported and can be configured side by side:
+| `apiVersion`     | API                                                 | Credentials                 |
+|------------------|-----------------------------------------------------|-----------------------------|
+| `v2`             | Official [TIDAL API](https://developer.tidal.com)   | `clientId` + `clientSecret` |
+| `v1`             | Unofficial `api.tidal.com/v1`                       | `token`                     |
+| `auto` (default) | `v2` if its credentials are set, otherwise `v1`     | any                         |
 
-| `apiVersion` | API                                                       | Credentials                  |
-|--------------|-----------------------------------------------------------|------------------------------|
-| `v2`         | Official [TIDAL API](https://developer.tidal.com) (v2)    | `clientId` + `clientSecret`  |
-| `v1`         | Unofficial `api.tidal.com/v1` API                         | `token`                      |
-| `auto`       | `v2` when `clientId` and `clientSecret` are set, otherwise `v1`. With both configured, requests that fail on v2 for reasons unrelated to the requested item (server errors, authentication, rate limiting, network) are retried on v1. | any of the above |
-
-A config that only sets `token` keeps working exactly as before.
+With both configured, `auto` retries a request on v1 when v2 fails with a server, auth, rate limit or network error.
 
 > [!WARNING]
-> API v1 is not an official API. It is undocumented, may change or stop working at any time, and its use may not be permitted by Tidal's terms. Prefer the official API v2 where possible.
+> API v1 is unofficial and may stop working at any time.
+
+Differences on v2:
+
+- Search returns at most 15 results, whatever `searchLimit` is.
+- Editorial playlists and mixes have no author.
+- Albums and playlists are fetched 20 tracks per request.
 
 <details>
 <summary>How to get the clientId and clientSecret (API v2)</summary>
 
-1. Sign in at [developer.tidal.com](https://developer.tidal.com).
-2. Open the **Dashboard** and create a new app.
-3. Copy the **Client ID** and **Client Secret** from the app's overview page.
-
-LavaSrc uses the OAuth 2.0 client credentials flow, so no user login or redirect URI is needed. The access token is renewed automatically.
+1. Sign in at [developer.tidal.com](https://developer.tidal.com) and open the **Dashboard**.
+2. Create an app and copy its **Client ID** and **Client Secret**.
 
 </details>
 
@@ -853,7 +852,7 @@ Use Google to get the tidal token.
 ```java
 AudioPlayerManager playerManager = new DefaultAudioPlayerManager();
 
-// create a new TidalSourceManager using the official API v2 (pass a token as well to fall back to v1) and register it
+// create a new TidalSourceManager with the API v2 credentials (and optionally a v1 token) and register it
 var tidal = new TidalSourceManager(countryCode, unused -> playerManager, new DefaultMirroringAudioTrackResolver(providers), null, "your client id", "your client secret", TidalApiVersion.AUTO);
 
 playerManager.registerSourceManager(tidal);
