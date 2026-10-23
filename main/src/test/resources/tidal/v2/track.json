@@ -1,0 +1,219 @@
+{
+  "data": {
+    "id": "75413016",
+    "type": "tracks",
+    "attributes": {
+      "title": "4:44",
+      "version": null,
+      "isrc": "QMJMT1701237",
+      "duration": "PT4M44S",
+      "copyright": {
+        "text": "(p)(c) 2017 S. CARTER ENTERPRISES, LLC. MARKETED BY ROC NATION & DISTRIBUTED BY ROC NATION/UMG RECORDINGS INC."
+      },
+      "explicit": true,
+      "popularity": 0.6880688374378553,
+      "accessType": "PUBLIC",
+      "availability": [
+        "STREAM",
+        "DJ"
+      ],
+      "mediaTags": [
+        "LOSSLESS"
+      ],
+      "externalLinks": [
+        {
+          "href": "https://tidal.com/browse/track/75413016",
+          "meta": {
+            "type": "TIDAL_SHARING"
+          }
+        }
+      ],
+      "spotlighted": false,
+      "createdAt": "2017-06-22T17:00:57Z"
+    },
+    "relationships": {
+      "albums": {
+        "data": [
+          {
+            "id": "75413011",
+            "type": "albums"
+          }
+        ],
+        "links": {
+          "self": "/tracks/75413016/relationships/albums?countryCode=IT"
+        }
+      },
+      "artists": {
+        "data": [
+          {
+            "id": "7804",
+            "type": "artists"
+          }
+        ],
+        "links": {
+          "self": "/tracks/75413016/relationships/artists?countryCode=IT"
+        }
+      }
+    }
+  },
+  "links": {
+    "self": "/tracks/75413016?include=albums.coverArt%2Cartists&countryCode=IT"
+  },
+  "included": [
+    {
+      "id": "75413011",
+      "type": "albums",
+      "attributes": {
+        "title": "4:44",
+        "barcodeId": "00854242007552",
+        "numberOfVolumes": 1,
+        "numberOfItems": 13,
+        "duration": "PT46M17S",
+        "explicit": true,
+        "releaseDate": "2017-06-30",
+        "copyright": {
+          "text": "(p)(c) 2017 S. CARTER ENTERPRISES, LLC. MARKETED BY ROC NATION & DISTRIBUTED BY ROC NATION/UMG RECORDINGS INC."
+        },
+        "popularity": 0.7718613005093448,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/album/75413011",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "type": "ALBUM",
+        "albumType": "ALBUM",
+        "createdAt": "2017-06-22T17:00:57Z"
+      },
+      "relationships": {
+        "coverArt": {
+          "data": [
+            {
+              "id": "iWOu0yW0IPWx41tXpzcn",
+              "type": "artworks"
+            }
+          ],
+          "links": {
+            "self": "/albums/75413011/relationships/coverArt?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "7804",
+      "type": "artists",
+      "attributes": {
+        "name": "JAŸ-Z",
+        "popularity": 0.9614253085579615,
+        "numberOfFollowers": 3146706,
+        "externalLinks": [
+          {
+            "href": "https://www.facebook.com/JayZ",
+            "meta": {
+              "type": "FACEBOOK"
+            }
+          },
+          {
+            "href": "https://www.instagram.com/jayz",
+            "meta": {
+              "type": "INSTAGRAM"
+            }
+          },
+          {
+            "href": "https://twitter.com/SC",
+            "meta": {
+              "type": "TWITTER"
+            }
+          },
+          {
+            "href": "https://tidal.com/browse/artist/7804",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "ownerType": "LABEL"
+      }
+    },
+    {
+      "id": "iWOu0yW0IPWx41tXpzcn",
+      "type": "artworks",
+      "attributes": {
+        "mediaType": "IMAGE",
+        "files": [
+          {
+            "href": "https://resources.tidal.com/images/7c298a27/caec/4058/9a7b/5f34cfd2c857/1280x1280.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1280,
+              "height": 1280
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/7c298a27/caec/4058/9a7b/5f34cfd2c857/1080x1080.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1080,
+              "height": 1080
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/7c298a27/caec/4058/9a7b/5f34cfd2c857/750x750.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 750,
+              "height": 750
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/7c298a27/caec/4058/9a7b/5f34cfd2c857/640x640.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 640,
+              "height": 640
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/7c298a27/caec/4058/9a7b/5f34cfd2c857/320x320.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 320,
+              "height": 320
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/7c298a27/caec/4058/9a7b/5f34cfd2c857/160x160.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 160,
+              "height": 160
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/7c298a27/caec/4058/9a7b/5f34cfd2c857/80x80.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 80,
+              "height": 80
+            }
+          }
+        ],
+        "visualMetadata": {
+          "selectedPaletteColor": "#886C56",
+          "blurHash": "UOQkZ#t6t6oL~AWVWVj[E3j@s.jtNHj[oLay",
+          "status": "OK"
+        }
+      }
+    }
+  ]
+}

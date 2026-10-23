@@ -1,0 +1,869 @@
+{
+  "data": [
+    {
+      "id": "75413012",
+      "type": "tracks",
+      "meta": {
+        "volumeNumber": 1,
+        "trackNumber": 1
+      }
+    },
+    {
+      "id": "75413013",
+      "type": "videos",
+      "meta": {
+        "volumeNumber": 1,
+        "trackNumber": 2
+      }
+    },
+    {
+      "id": "75413014",
+      "type": "tracks",
+      "meta": {
+        "volumeNumber": 1,
+        "trackNumber": 3
+      }
+    },
+    {
+      "id": "75413015",
+      "type": "tracks",
+      "meta": {
+        "volumeNumber": 1,
+        "trackNumber": 4
+      }
+    },
+    {
+      "id": "75413016",
+      "type": "tracks",
+      "meta": {
+        "volumeNumber": 1,
+        "trackNumber": 5
+      }
+    },
+    {
+      "id": "75413017",
+      "type": "tracks",
+      "meta": {
+        "volumeNumber": 1,
+        "trackNumber": 6
+      }
+    },
+    {
+      "id": "75413018",
+      "type": "tracks",
+      "meta": {
+        "volumeNumber": 1,
+        "trackNumber": 7
+      }
+    },
+    {
+      "id": "75413019",
+      "type": "tracks",
+      "meta": {
+        "volumeNumber": 1,
+        "trackNumber": 8
+      }
+    },
+    {
+      "id": "75413020",
+      "type": "tracks",
+      "meta": {
+        "volumeNumber": 1,
+        "trackNumber": 9
+      }
+    },
+    {
+      "id": "75413021",
+      "type": "tracks",
+      "meta": {
+        "volumeNumber": 1,
+        "trackNumber": 10
+      }
+    },
+    {
+      "id": "76881696",
+      "type": "tracks",
+      "meta": {
+        "volumeNumber": 1,
+        "trackNumber": 11
+      }
+    },
+    {
+      "id": "76881697",
+      "type": "tracks",
+      "meta": {
+        "volumeNumber": 1,
+        "trackNumber": 12
+      }
+    },
+    {
+      "id": "76881698",
+      "type": "tracks",
+      "meta": {
+        "volumeNumber": 1,
+        "trackNumber": 13
+      }
+    }
+  ],
+  "links": {
+    "self": "/albums/75413011/relationships/items?include=items.artists&countryCode=IT"
+  },
+  "included": [
+    {
+      "id": "1566",
+      "type": "artists",
+      "attributes": {
+        "name": "Beyoncé",
+        "popularity": 0.9582937827192956,
+        "numberOfFollowers": 1915841,
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/artist/1566",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "ownerType": "LABEL"
+      }
+    },
+    {
+      "id": "29899",
+      "type": "artists",
+      "attributes": {
+        "name": "Damian \"Jr. Gong\" Marley",
+        "popularity": 0.7993871122953892,
+        "numberOfFollowers": 126497,
+        "externalLinks": [
+          {
+            "href": "https://www.facebook.com/damianmarley",
+            "meta": {
+              "type": "FACEBOOK"
+            }
+          },
+          {
+            "href": "https://twitter.com/damianmarley",
+            "meta": {
+              "type": "TWITTER"
+            }
+          },
+          {
+            "href": "https://tidal.com/browse/artist/29899",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "ownerType": "LABEL"
+      }
+    },
+    {
+      "id": "3801573",
+      "type": "artists",
+      "attributes": {
+        "name": "James Blake",
+        "popularity": 0.8235299587249756,
+        "numberOfFollowers": 100250,
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/artist/3801573",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "ownerType": "LABEL"
+      }
+    },
+    {
+      "id": "3997333",
+      "type": "artists",
+      "attributes": {
+        "name": "Frank Ocean",
+        "popularity": 0.8834881917271055,
+        "numberOfFollowers": 432742,
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/artist/3997333",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "ownerType": "LABEL"
+      }
+    },
+    {
+      "id": "7804",
+      "type": "artists",
+      "attributes": {
+        "name": "JAŸ-Z",
+        "popularity": 0.9614253085579615,
+        "numberOfFollowers": 3146706,
+        "externalLinks": [
+          {
+            "href": "https://www.facebook.com/JayZ",
+            "meta": {
+              "type": "FACEBOOK"
+            }
+          },
+          {
+            "href": "https://www.instagram.com/jayz",
+            "meta": {
+              "type": "INSTAGRAM"
+            }
+          },
+          {
+            "href": "https://twitter.com/SC",
+            "meta": {
+              "type": "TWITTER"
+            }
+          },
+          {
+            "href": "https://tidal.com/browse/artist/7804",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "ownerType": "LABEL"
+      }
+    },
+    {
+      "id": "85128561",
+      "type": "artists",
+      "attributes": {
+        "name": "Gloria Carter",
+        "popularity": 0.3806032668217868,
+        "numberOfFollowers": 1,
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/artist/85128561",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "ownerType": "LABEL"
+      }
+    },
+    {
+      "id": "75413012",
+      "type": "tracks",
+      "attributes": {
+        "title": "Kill Jay Z",
+        "version": null,
+        "isrc": "QMJMT1701229",
+        "duration": "PT2M58S",
+        "copyright": {
+          "text": "(p)(c) 2017 S. CARTER ENTERPRISES, LLC. MARKETED BY ROC NATION & DISTRIBUTED BY ROC NATION/UMG RECORDINGS INC."
+        },
+        "explicit": true,
+        "popularity": 0.5168414088251008,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/75413012",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-06-22T17:00:57Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "7804",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/75413012/relationships/artists?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "75413013",
+      "type": "videos",
+      "attributes": {
+        "title": "The Story of O.J.",
+        "version": null,
+        "isrc": "QMJMT1701231",
+        "duration": "PT3M51S",
+        "copyright": {
+          "text": "(p)(c) 2017 S. CARTER ENTERPRISES, LLC. MARKETED BY ROC NATION & DISTRIBUTED BY ROC NATION/UMG RECORDINGS INC."
+        },
+        "explicit": true,
+        "popularity": 0.6698517867351372,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/75413013",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-06-22T17:00:57Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "7804",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/75413013/relationships/artists?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "75413014",
+      "type": "tracks",
+      "attributes": {
+        "title": "Smile",
+        "version": null,
+        "isrc": "QMJMT1701245",
+        "duration": "PT4M49S",
+        "copyright": {
+          "text": "(p)(c) 2017 S. CARTER ENTERPRISES, LLC. MARKETED BY ROC NATION & DISTRIBUTED BY ROC NATION/UMG RECORDINGS INC."
+        },
+        "explicit": true,
+        "popularity": 0.5208677384746497,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/75413014",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-06-22T17:00:57Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "7804",
+              "type": "artists"
+            },
+            {
+              "id": "85128561",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/75413014/relationships/artists?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "75413015",
+      "type": "tracks",
+      "attributes": {
+        "title": "Caught Their Eyes",
+        "version": null,
+        "isrc": "QMJMT1701235",
+        "duration": "PT3M26S",
+        "copyright": {
+          "text": "(p)(c) 2017 S. CARTER ENTERPRISES, LLC. MARKETED BY ROC NATION & DISTRIBUTED BY ROC NATION/UMG RECORDINGS INC."
+        },
+        "explicit": true,
+        "popularity": 0.5551528760092993,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/75413015",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-06-22T17:00:57Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "7804",
+              "type": "artists"
+            },
+            {
+              "id": "3997333",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/75413015/relationships/artists?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "75413016",
+      "type": "tracks",
+      "attributes": {
+        "title": "4:44",
+        "version": null,
+        "isrc": "QMJMT1701237",
+        "duration": "PT4M44S",
+        "copyright": {
+          "text": "(p)(c) 2017 S. CARTER ENTERPRISES, LLC. MARKETED BY ROC NATION & DISTRIBUTED BY ROC NATION/UMG RECORDINGS INC."
+        },
+        "explicit": true,
+        "popularity": 0.6880688374378553,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/75413016",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-06-22T17:00:57Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "7804",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/75413016/relationships/artists?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "75413017",
+      "type": "tracks",
+      "attributes": {
+        "title": "Family Feud",
+        "version": null,
+        "isrc": "QMJMT1701334",
+        "duration": "PT4M11S",
+        "copyright": {
+          "text": "(p)(c) 2017 S. CARTER ENTERPRISES, LLC. MARKETED BY ROC NATION & DISTRIBUTED BY ROC NATION/UMG RECORDINGS INC."
+        },
+        "explicit": true,
+        "popularity": 0.5807855237583496,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/75413017",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-06-22T17:00:57Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "7804",
+              "type": "artists"
+            },
+            {
+              "id": "1566",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/75413017/relationships/artists?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "75413018",
+      "type": "tracks",
+      "attributes": {
+        "title": "Bam",
+        "version": null,
+        "isrc": "QMJMT1701239",
+        "duration": "PT3M54S",
+        "copyright": {
+          "text": "(p)(c) 2017 S. CARTER ENTERPRISES, LLC. MARKETED BY ROC NATION & DISTRIBUTED BY ROC NATION/UMG RECORDINGS INC."
+        },
+        "explicit": true,
+        "popularity": 0.5854857979721716,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/75413018",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-06-22T17:00:57Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "7804",
+              "type": "artists"
+            },
+            {
+              "id": "29899",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/75413018/relationships/artists?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "75413019",
+      "type": "tracks",
+      "attributes": {
+        "title": "Moonlight",
+        "version": null,
+        "isrc": "QMJMT1701241",
+        "duration": "PT2M23S",
+        "copyright": {
+          "text": "(p)(c) 2017 S. CARTER ENTERPRISES, LLC. MARKETED BY ROC NATION & DISTRIBUTED BY ROC NATION/UMG RECORDINGS INC."
+        },
+        "explicit": true,
+        "popularity": 0.47406698738923486,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/75413019",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-06-22T17:00:57Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "7804",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/75413019/relationships/artists?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "75413020",
+      "type": "tracks",
+      "attributes": {
+        "title": "Marcy Me",
+        "version": null,
+        "isrc": "QMJMT1701303",
+        "duration": "PT2M54S",
+        "copyright": {
+          "text": "(p)(c) 2017 S. CARTER ENTERPRISES, LLC. MARKETED BY ROC NATION & DISTRIBUTED BY ROC NATION/UMG RECORDINGS INC."
+        },
+        "explicit": true,
+        "popularity": 0.5549572126798967,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/75413020",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-06-22T17:00:57Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "7804",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/75413020/relationships/artists?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "75413021",
+      "type": "tracks",
+      "attributes": {
+        "title": "Legacy",
+        "version": null,
+        "isrc": "QMJMT1701247",
+        "duration": "PT2M57S",
+        "copyright": {
+          "text": "(p)(c) 2017 S. CARTER ENTERPRISES, LLC. MARKETED BY ROC NATION & DISTRIBUTED BY ROC NATION/UMG RECORDINGS INC."
+        },
+        "explicit": true,
+        "popularity": 0.4834708337983975,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/75413021",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-06-22T17:00:57Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "7804",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/75413021/relationships/artists?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "76881696",
+      "type": "tracks",
+      "attributes": {
+        "title": "Adnis",
+        "version": null,
+        "isrc": "QMJMT1701305",
+        "duration": "PT2M27S",
+        "copyright": {
+          "text": "(p)(c) 2017 S. CARTER ENTERPRISES, LLC. MARKETED BY ROC NATION & DISTRIBUTED BY ROC NATION/UMG RECORDINGS INC."
+        },
+        "explicit": true,
+        "popularity": 0.387726892849898,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/76881696",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-07-30T20:47:00Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "7804",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/76881696/relationships/artists?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "76881697",
+      "type": "tracks",
+      "attributes": {
+        "title": "Blue’s Freestyle/We Family feat. Blue Ivy Carter",
+        "version": null,
+        "isrc": "QMJMT1701233",
+        "duration": "PT4M24S",
+        "copyright": {
+          "text": "(p)(c) 2017 S. CARTER ENTERPRISES, LLC. MARKETED BY ROC NATION & DISTRIBUTED BY ROC NATION/UMG RECORDINGS INC."
+        },
+        "explicit": true,
+        "popularity": 0.40042627904234684,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/76881697",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-07-30T20:47:01Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "7804",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/76881697/relationships/artists?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "76881698",
+      "type": "tracks",
+      "attributes": {
+        "title": "MaNyfaCedGod",
+        "version": null,
+        "isrc": "QMJMT1701301",
+        "duration": "PT3M19S",
+        "copyright": {
+          "text": "(p)(c) 2017 S. CARTER ENTERPRISES, LLC. MARKETED BY ROC NATION & DISTRIBUTED BY ROC NATION/UMG RECORDINGS INC."
+        },
+        "explicit": true,
+        "popularity": 0.39717999667508647,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/76881698",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-07-30T21:06:49Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "7804",
+              "type": "artists"
+            },
+            {
+              "id": "3801573",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/76881698/relationships/artists?countryCode=IT"
+          }
+        }
+      }
+    }
+  ]
+}

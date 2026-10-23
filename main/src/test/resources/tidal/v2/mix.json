@@ -1,0 +1,88 @@
+{
+  "data": {
+    "id": "001fdb7dd3214d7c96032f0c0594e1",
+    "type": "playlists",
+    "attributes": {
+      "name": "4:44",
+      "description": "JAŸ-Z",
+      "bounded": false,
+      "externalLinks": [
+        {
+          "href": "https://listen.tidal.com/mix/001fdb7dd3214d7c96032f0c0594e1",
+          "meta": {
+            "type": "TIDAL_SHARING"
+          }
+        }
+      ],
+      "createdAt": "2026-10-23T13:23:20.743Z",
+      "lastModifiedAt": "2026-10-23T13:23:20.743Z",
+      "accessType": "PUBLIC",
+      "playlistType": "MIX",
+      "numberOfFollowers": 0
+    },
+    "relationships": {
+      "coverArt": {
+        "data": [
+          {
+            "id": "86EFpfvW5of7SEa16yQwhSvFTI4S1ITHdH9egyX007cdbl0KaP",
+            "type": "artworks"
+          }
+        ],
+        "links": {
+          "self": "/playlists/001fdb7dd3214d7c96032f0c0594e1/relationships/coverArt?countryCode=IT"
+        }
+      },
+      "curators": {
+        "data": [],
+        "links": {
+          "self": "/playlists/001fdb7dd3214d7c96032f0c0594e1/relationships/curators?countryCode=IT"
+        }
+      }
+    }
+  },
+  "links": {
+    "self": "/playlists/001fdb7dd3214d7c96032f0c0594e1?include=coverArt%2Ccurators&countryCode=IT"
+  },
+  "included": [
+    {
+      "id": "86EFpfvW5of7SEa16yQwhSvFTI4S1ITHdH9egyX007cdbl0KaP",
+      "type": "artworks",
+      "attributes": {
+        "mediaType": "IMAGE",
+        "files": [
+          {
+            "href": "https://images.tidal.com/0/EMACGMACIKABKKAB/CAEQBhokN2MyOThhMjcvY2FlYy80MDU4LzlhN2IvNWYzNGNmZDJjODU3GiQ4NGQ4MWI3YS9hMTJlLzRhM2UvYmRhNC9kMDUyN2NiMWM4Y2YaJDVhYzhmOGYyL2Y5OGMvNDNjNC84ZjQ5LzZjY2ViZTJlYmEyNiILVHJhY2sgUmFkaW8iBDQ6NDQqByNGOEM0OUIwAg?token=c84b1d3f55ee2493ea4d82b716c6acc40f0be157",
+            "meta": {
+              "width": 160,
+              "height": 160
+            }
+          },
+          {
+            "href": "https://images.tidal.com/0/EMACGMACIKABKKAB/CAEQBhokN2MyOThhMjcvY2FlYy80MDU4LzlhN2IvNWYzNGNmZDJjODU3GiQ4NGQ4MWI3YS9hMTJlLzRhM2UvYmRhNC9kMDUyN2NiMWM4Y2YaJDVhYzhmOGYyL2Y5OGMvNDNjNC84ZjQ5LzZjY2ViZTJlYmEyNiILVHJhY2sgUmFkaW8iBDQ6NDQqByNGOEM0OUIwAg?token=c84b1d3f55ee2493ea4d82b716c6acc40f0be157",
+            "meta": {
+              "width": 320,
+              "height": 320
+            }
+          },
+          {
+            "href": "https://images.tidal.com/0/EIAFGIAFIMACKMAC/CAEQBhokN2MyOThhMjcvY2FlYy80MDU4LzlhN2IvNWYzNGNmZDJjODU3GiQ4NGQ4MWI3YS9hMTJlLzRhM2UvYmRhNC9kMDUyN2NiMWM4Y2YaJDVhYzhmOGYyL2Y5OGMvNDNjNC84ZjQ5LzZjY2ViZTJlYmEyNiILVHJhY2sgUmFkaW8iBDQ6NDQqByNGOEM0OUIwAg?token=ca2541735c9a93d4626565d6b345b185574401d9",
+            "meta": {
+              "width": 480,
+              "height": 480
+            }
+          },
+          {
+            "href": "https://images.tidal.com/0/ENwLGNwLIO4FKO4F/CAEQBhokN2MyOThhMjcvY2FlYy80MDU4LzlhN2IvNWYzNGNmZDJjODU3GiQ4NGQ4MWI3YS9hMTJlLzRhM2UvYmRhNC9kMDUyN2NiMWM4Y2YaJDVhYzhmOGYyL2Y5OGMvNDNjNC84ZjQ5LzZjY2ViZTJlYmEyNiILVHJhY2sgUmFkaW8iBDQ6NDQqByNGOEM0OUIwAg?token=84e9ba6280dcbc98154c1097dc958bef80c816ab",
+            "meta": {
+              "width": 1080,
+              "height": 1080
+            }
+          }
+        ],
+        "visualMetadata": {
+          "status": "NONE"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,3170 @@
+{
+  "data": [
+    {
+      "id": "75413016",
+      "type": "tracks"
+    },
+    {
+      "id": "72694593",
+      "type": "tracks"
+    },
+    {
+      "id": "68005606",
+      "type": "tracks"
+    },
+    {
+      "id": "72642070",
+      "type": "tracks"
+    },
+    {
+      "id": "71717729",
+      "type": "tracks"
+    },
+    {
+      "id": "75413012",
+      "type": "tracks"
+    },
+    {
+      "id": "135450381",
+      "type": "tracks"
+    },
+    {
+      "id": "72694583",
+      "type": "tracks"
+    },
+    {
+      "id": "76827454",
+      "type": "tracks"
+    },
+    {
+      "id": "68005603",
+      "type": "tracks"
+    },
+    {
+      "id": "71514247",
+      "type": "tracks"
+    },
+    {
+      "id": "76531925",
+      "type": "tracks"
+    },
+    {
+      "id": "71717750",
+      "type": "tracks"
+    },
+    {
+      "id": "75413015",
+      "type": "tracks"
+    },
+    {
+      "id": "134832277",
+      "type": "tracks"
+    },
+    {
+      "id": "76331733",
+      "type": "tracks"
+    },
+    {
+      "id": "72694584",
+      "type": "tracks"
+    },
+    {
+      "id": "74284059",
+      "type": "tracks"
+    },
+    {
+      "id": "76384504",
+      "type": "tracks"
+    },
+    {
+      "id": "68005599",
+      "type": "tracks"
+    }
+  ],
+  "links": {
+    "self": "/playlists/001fdb7dd3214d7c96032f0c0594e1/relationships/items?include=items.albums.coverArt%2Citems.artists&countryCode=IT",
+    "next": "/playlists/001fdb7dd3214d7c96032f0c0594e1/relationships/items?include=items.albums.coverArt%2Citems.artists&countryCode=IT&page%5Bcursor%5D=3nI1Esi",
+    "meta": {
+      "nextCursor": "3nI1Esi"
+    }
+  },
+  "included": [
+    {
+      "id": "134832276",
+      "type": "albums",
+      "attributes": {
+        "title": "Love Is Only a Feeling",
+        "barcodeId": "00886446617831",
+        "numberOfVolumes": 1,
+        "numberOfItems": 1,
+        "duration": "PT2M32S",
+        "explicit": true,
+        "releaseDate": "2020-03-27",
+        "copyright": {
+          "text": "© 2017 Pro Era / Cinematic Music Group"
+        },
+        "popularity": 0.4244490949810996,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/album/134832276",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "type": "SINGLE",
+        "albumType": "SINGLE"
+      },
+      "relationships": {
+        "coverArt": {
+          "data": [
+            {
+              "id": "2xpmpI1s9DzI18vU2ijbhW",
+              "type": "artworks"
+            }
+          ],
+          "links": {
+            "self": "/albums/134832276/relationships/coverArt?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "135450380",
+      "type": "albums",
+      "attributes": {
+        "title": "500 Benz",
+        "barcodeId": "00886446617824",
+        "numberOfVolumes": 1,
+        "numberOfItems": 1,
+        "duration": "PT3M22S",
+        "explicit": true,
+        "releaseDate": "2020-03-27",
+        "copyright": {
+          "text": "© 2017 Pro Era / Cinematic Music Group"
+        },
+        "popularity": 0.2510706505737145,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/album/135450380",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "type": "SINGLE",
+        "albumType": "SINGLE"
+      },
+      "relationships": {
+        "coverArt": {
+          "data": [
+            {
+              "id": "2xpmpI1s9DzI1ACAHvxnUG",
+              "type": "artworks"
+            }
+          ],
+          "links": {
+            "self": "/albums/135450380/relationships/coverArt?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "68005596",
+      "type": "albums",
+      "attributes": {
+        "title": "4 Your Eyez Only",
+        "barcodeId": "00850498007520",
+        "numberOfVolumes": 1,
+        "numberOfItems": 10,
+        "duration": "PT44M32S",
+        "explicit": true,
+        "releaseDate": "2016-12-09",
+        "copyright": {
+          "text": "© 2016 Dreamville, Inc., under exclusive license to Roc Nation Records"
+        },
+        "popularity": 0.663945554120202,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/album/68005596",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "type": "ALBUM",
+        "albumType": "ALBUM",
+        "createdAt": "2016-12-07T23:52:25Z"
+      },
+      "relationships": {
+        "coverArt": {
+          "data": [
+            {
+              "id": "iWOu0yW0IPRgt2c2hmYo",
+              "type": "artworks"
+            }
+          ],
+          "links": {
+            "self": "/albums/68005596/relationships/coverArt?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "71514245",
+      "type": "albums",
+      "attributes": {
+        "title": "Rather You Than Me",
+        "barcodeId": "886446257198",
+        "numberOfVolumes": 1,
+        "numberOfItems": 14,
+        "duration": "PT1H3M",
+        "explicit": true,
+        "releaseDate": "2017-03-17",
+        "copyright": {
+          "text": "(P) 2017 Epic Records, a division of Sony Music Entertainment"
+        },
+        "popularity": 0.49971173542965724,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/album/71514245",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "type": "ALBUM",
+        "albumType": "ALBUM"
+      },
+      "relationships": {
+        "coverArt": {
+          "data": [
+            {
+              "id": "iWOu0yW0IPWrud9ZmzvZ",
+              "type": "artworks"
+            }
+          ],
+          "links": {
+            "self": "/albums/71514245/relationships/coverArt?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "71717728",
+      "type": "albums",
+      "attributes": {
+        "title": "More Life",
+        "barcodeId": "00602557579406",
+        "numberOfVolumes": 1,
+        "numberOfItems": 22,
+        "duration": "PT1H21M41S",
+        "explicit": true,
+        "releaseDate": "2017-03-18",
+        "copyright": {
+          "text": "© 2017 Young Money Entertainment/Cash Money Records"
+        },
+        "popularity": 0.8136667888595956,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/album/71717728",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "type": "ALBUM",
+        "albumType": "ALBUM",
+        "createdAt": "2017-03-18T16:21:58Z"
+      },
+      "relationships": {
+        "coverArt": {
+          "data": [
+            {
+              "id": "iWOu0yW0IPWrvFrxp2EK",
+              "type": "artworks"
+            }
+          ],
+          "links": {
+            "self": "/albums/71717728/relationships/coverArt?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "72642069",
+      "type": "albums",
+      "attributes": {
+        "title": "Biking",
+        "barcodeId": "818010024967",
+        "numberOfVolumes": 1,
+        "numberOfItems": 1,
+        "duration": "PT4M38S",
+        "explicit": true,
+        "releaseDate": "2017-04-10",
+        "copyright": {
+          "text": "2017 Blonded"
+        },
+        "popularity": 0.483118732849999,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/album/72642069",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "type": "SINGLE",
+        "albumType": "SINGLE"
+      },
+      "relationships": {
+        "coverArt": {
+          "data": [
+            {
+              "id": "iWOu0yW0IPWtCsGJBIu9",
+              "type": "artworks"
+            }
+          ],
+          "links": {
+            "self": "/albums/72642069/relationships/coverArt?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "72694579",
+      "type": "albums",
+      "attributes": {
+        "title": "DAMN.",
+        "barcodeId": "00602557608717",
+        "numberOfVolumes": 1,
+        "numberOfItems": 14,
+        "duration": "PT55M1S",
+        "explicit": true,
+        "releaseDate": "2017-04-14",
+        "copyright": {
+          "text": "© 2017 Aftermath/Interscope (Top Dawg Entertainment)"
+        },
+        "popularity": 0.8585207683326471,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/album/72694579",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "type": "ALBUM",
+        "albumType": "ALBUM",
+        "createdAt": "2017-04-11T20:11:56Z"
+      },
+      "relationships": {
+        "coverArt": {
+          "data": [
+            {
+              "id": "iWOu0yW0IPWtCsdmnhEH",
+              "type": "artworks"
+            }
+          ],
+          "links": {
+            "self": "/albums/72694579/relationships/coverArt?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "74284058",
+      "type": "albums",
+      "attributes": {
+        "title": "Mask Off (feat. Kendrick Lamar) (Remix)",
+        "barcodeId": "886446540696",
+        "numberOfVolumes": 1,
+        "numberOfItems": 1,
+        "duration": "PT4M18S",
+        "explicit": true,
+        "releaseDate": "2017-05-23",
+        "copyright": {
+          "text": "(P) 2017 Epic Records, a division of Sony Music Entertainment with A1 / Freebandz"
+        },
+        "popularity": 0.4606543578112064,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/album/74284058",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "type": "SINGLE",
+        "albumType": "SINGLE",
+        "version": "Remix"
+      },
+      "relationships": {
+        "coverArt": {
+          "data": [
+            {
+              "id": "iWOu0yW0IPWvlUBVeSYy",
+              "type": "artworks"
+            }
+          ],
+          "links": {
+            "self": "/albums/74284058/relationships/coverArt?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "75413011",
+      "type": "albums",
+      "attributes": {
+        "title": "4:44",
+        "barcodeId": "00854242007552",
+        "numberOfVolumes": 1,
+        "numberOfItems": 13,
+        "duration": "PT46M17S",
+        "explicit": true,
+        "releaseDate": "2017-06-30",
+        "copyright": {
+          "text": "(p)(c) 2017 S. CARTER ENTERPRISES, LLC. MARKETED BY ROC NATION & DISTRIBUTED BY ROC NATION/UMG RECORDINGS INC."
+        },
+        "popularity": 0.7718613005093448,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/album/75413011",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "type": "ALBUM",
+        "albumType": "ALBUM",
+        "createdAt": "2017-06-22T17:00:57Z"
+      },
+      "relationships": {
+        "coverArt": {
+          "data": [
+            {
+              "id": "iWOu0yW0IPWx41tXpzcn",
+              "type": "artworks"
+            }
+          ],
+          "links": {
+            "self": "/albums/75413011/relationships/coverArt?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "76331728",
+      "type": "albums",
+      "attributes": {
+        "title": "Flower Boy",
+        "barcodeId": "886446626635",
+        "numberOfVolumes": 1,
+        "numberOfItems": 14,
+        "duration": "PT46M39S",
+        "explicit": true,
+        "releaseDate": "2017-07-21",
+        "copyright": {
+          "text": "(P) 2017 Columbia Records, a Division of Sony Music Entertainment, as exclusive licensee"
+        },
+        "popularity": 0.7750451139195157,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/album/76331728",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "type": "ALBUM",
+        "albumType": "ALBUM"
+      },
+      "relationships": {
+        "coverArt": {
+          "data": [
+            {
+              "id": "iWOu0yW0IPWyLeDG039U",
+              "type": "artworks"
+            }
+          ],
+          "links": {
+            "self": "/albums/76331728/relationships/coverArt?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "76384491",
+      "type": "albums",
+      "attributes": {
+        "title": "Wins & Losses",
+        "barcodeId": "075679893802",
+        "numberOfVolumes": 1,
+        "numberOfItems": 17,
+        "duration": "PT1H7M4S",
+        "explicit": true,
+        "releaseDate": "2017-07-21",
+        "copyright": {
+          "text": "© 2017 Maybach Music Group LLC/Atlantic Recording Corporation for the United States and Maybach Music Group LLC/WEA International Inc. for the world outside of the United States."
+        },
+        "popularity": 0.2643899733535149,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/album/76384491",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "type": "ALBUM",
+        "albumType": "ALBUM"
+      },
+      "relationships": {
+        "coverArt": {
+          "data": [
+            {
+              "id": "iWOu0yW0IPWyLeakie0H",
+              "type": "artworks"
+            }
+          ],
+          "links": {
+            "self": "/albums/76384491/relationships/coverArt?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "76531924",
+      "type": "albums",
+      "attributes": {
+        "title": "The Autobiography",
+        "barcodeId": "00857491007021",
+        "numberOfVolumes": 1,
+        "numberOfItems": 15,
+        "duration": "PT1H33S",
+        "explicit": true,
+        "releaseDate": "2017-07-28",
+        "copyright": {
+          "text": "© 2017 Roc Nation Records, LLC"
+        },
+        "popularity": 0.39164320184341256,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/album/76531924",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "type": "ALBUM",
+        "albumType": "ALBUM",
+        "createdAt": "2017-07-21T00:58:30Z"
+      },
+      "relationships": {
+        "coverArt": {
+          "data": [
+            {
+              "id": "iWOu0yW0IPWyMGvac4sW",
+              "type": "artworks"
+            }
+          ],
+          "links": {
+            "self": "/albums/76531924/relationships/coverArt?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "76827449",
+      "type": "albums",
+      "attributes": {
+        "title": "Wins & Losses (Deluxe Edition)",
+        "barcodeId": "075679889461",
+        "numberOfVolumes": 1,
+        "numberOfItems": 19,
+        "duration": "PT1H15M21S",
+        "explicit": true,
+        "releaseDate": "2017-07-21",
+        "copyright": {
+          "text": "© 2017 Maybach Music Group LLC/Atlantic Recording Corporation for the United States and Maybach Music Group LLC/WEA International Inc. for the world outside of the United States."
+        },
+        "popularity": 0.5142167055186379,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/album/76827449",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "type": "ALBUM",
+        "albumType": "ALBUM",
+        "createdAt": "2017-07-28T15:20:47Z"
+      },
+      "relationships": {
+        "coverArt": {
+          "data": [
+            {
+              "id": "iWOu0yW0IPWyNCvVe38j",
+              "type": "artworks"
+            }
+          ],
+          "links": {
+            "self": "/albums/76827449/relationships/coverArt?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "24995",
+      "type": "artists",
+      "attributes": {
+        "name": "Rick Ross",
+        "popularity": 0.8706091939919199,
+        "numberOfFollowers": 391425,
+        "externalLinks": [
+          {
+            "href": "https://instagram.com/richforever/?hl=en",
+            "meta": {
+              "type": "INSTAGRAM"
+            }
+          },
+          {
+            "href": "https://twitter.com/rickyrozay",
+            "meta": {
+              "type": "TWITTER"
+            }
+          },
+          {
+            "href": "https://tidal.com/browse/artist/24995",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "ownerType": "LABEL"
+      }
+    },
+    {
+      "id": "3502522",
+      "type": "artists",
+      "attributes": {
+        "name": "The-Dream",
+        "popularity": 0.7986472002423616,
+        "numberOfFollowers": 91081,
+        "externalLinks": [
+          {
+            "href": "https://www.facebook.com/thedreammusic/",
+            "meta": {
+              "type": "FACEBOOK"
+            }
+          },
+          {
+            "href": "https://twitter.com/TheKingDream",
+            "meta": {
+              "type": "TWITTER"
+            }
+          },
+          {
+            "href": "https://tidal.com/browse/artist/3502522",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "ownerType": "LABEL"
+      }
+    },
+    {
+      "id": "3618971",
+      "type": "artists",
+      "attributes": {
+        "name": "Future",
+        "popularity": 0.9554709792137146,
+        "numberOfFollowers": 1216639,
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/artist/3618971",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "ownerType": "LABEL"
+      }
+    },
+    {
+      "id": "3632070",
+      "type": "artists",
+      "attributes": {
+        "name": "Drake",
+        "popularity": 0.9920331301811972,
+        "numberOfFollowers": 4126127,
+        "externalLinks": [
+          {
+            "href": "https://twitter.com/Drake",
+            "meta": {
+              "type": "TWITTER"
+            }
+          },
+          {
+            "href": "https://tidal.com/browse/artist/3632070",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "ownerType": "LABEL"
+      }
+    },
+    {
+      "id": "3652822",
+      "type": "artists",
+      "attributes": {
+        "name": "J. Cole",
+        "popularity": 0.9410301546416101,
+        "numberOfFollowers": 1254910,
+        "externalLinks": [
+          {
+            "href": "https://twitter.com/JColeNC",
+            "meta": {
+              "type": "TWITTER"
+            }
+          },
+          {
+            "href": "https://tidal.com/browse/artist/3652822",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "ownerType": "LABEL"
+      }
+    },
+    {
+      "id": "3816041",
+      "type": "artists",
+      "attributes": {
+        "name": "Kendrick Lamar",
+        "popularity": 0.967704176902771,
+        "numberOfFollowers": 1593486,
+        "externalLinks": [
+          {
+            "href": "https://www.instagram.com/kendricklamar/",
+            "meta": {
+              "type": "INSTAGRAM"
+            }
+          },
+          {
+            "href": "https://twitter.com/kendricklamar",
+            "meta": {
+              "type": "TWITTER"
+            }
+          },
+          {
+            "href": "https://tidal.com/browse/artist/3816041",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "ownerType": "LABEL"
+      }
+    },
+    {
+      "id": "3908662",
+      "type": "artists",
+      "attributes": {
+        "name": "Tyler, The Creator",
+        "popularity": 0.9352097022141289,
+        "numberOfFollowers": 449215,
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/artist/3908662",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "ownerType": "MIXED"
+      }
+    },
+    {
+      "id": "3966408",
+      "type": "artists",
+      "attributes": {
+        "name": "Meek Mill",
+        "popularity": 0.8577466947446377,
+        "numberOfFollowers": 432071,
+        "externalLinks": [
+          {
+            "href": "https://facebook.com/meekmill",
+            "meta": {
+              "type": "FACEBOOK"
+            }
+          },
+          {
+            "href": "https://instagram.com/meekmill",
+            "meta": {
+              "type": "INSTAGRAM"
+            }
+          },
+          {
+            "href": "https://meekmill.com/",
+            "meta": {
+              "type": "OFFICIAL_HOMEPAGE"
+            }
+          },
+          {
+            "href": "https://tiktok.com/@meekmill",
+            "meta": {
+              "type": "TIKTOK"
+            }
+          },
+          {
+            "href": "https://twitter.com/meekmill",
+            "meta": {
+              "type": "TWITTER"
+            }
+          },
+          {
+            "href": "https://tidal.com/browse/artist/3966408",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "ownerType": "MIXED"
+      }
+    },
+    {
+      "id": "3997333",
+      "type": "artists",
+      "attributes": {
+        "name": "Frank Ocean",
+        "popularity": 0.8834881917271055,
+        "numberOfFollowers": 432742,
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/artist/3997333",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "ownerType": "LABEL"
+      }
+    },
+    {
+      "id": "4315444",
+      "type": "artists",
+      "attributes": {
+        "name": "A$AP Rocky",
+        "popularity": 0.9040014509499935,
+        "numberOfFollowers": 446792,
+        "externalLinks": [
+          {
+            "href": "https://www.facebook.com/asaprocky/",
+            "meta": {
+              "type": "FACEBOOK"
+            }
+          },
+          {
+            "href": "https://www.instagram.com/asaprocky",
+            "meta": {
+              "type": "INSTAGRAM"
+            }
+          },
+          {
+            "href": "https://twitter.com/asvpxrocky/",
+            "meta": {
+              "type": "TWITTER"
+            }
+          },
+          {
+            "href": "https://tidal.com/browse/artist/4315444",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "ownerType": "LABEL"
+      }
+    },
+    {
+      "id": "4793499",
+      "type": "artists",
+      "attributes": {
+        "name": "Joey Bada$$",
+        "popularity": 0.8326012949499124,
+        "numberOfFollowers": 174384,
+        "externalLinks": [
+          {
+            "href": "tidal.com/47minutes",
+            "meta": {
+              "type": "OFFICIAL_HOMEPAGE"
+            }
+          },
+          {
+            "href": "https://tidal.com/browse/artist/4793499",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "ownerType": "LABEL"
+      }
+    },
+    {
+      "id": "5034071",
+      "type": "artists",
+      "attributes": {
+        "name": "VIC MENSA",
+        "popularity": 0.7480675304528981,
+        "numberOfFollowers": 40105,
+        "externalLinks": [
+          {
+            "href": "https://www.facebook.com/VicMensa1",
+            "meta": {
+              "type": "FACEBOOK"
+            }
+          },
+          {
+            "href": "https://instagram.com/vicmensa/",
+            "meta": {
+              "type": "INSTAGRAM"
+            }
+          },
+          {
+            "href": "https://twitter.com/VicMensa",
+            "meta": {
+              "type": "TWITTER"
+            }
+          },
+          {
+            "href": "https://tidal.com/browse/artist/5034071",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "ownerType": "LABEL"
+      }
+    },
+    {
+      "id": "7804",
+      "type": "artists",
+      "attributes": {
+        "name": "JAŸ-Z",
+        "popularity": 0.9614253085579615,
+        "numberOfFollowers": 3146706,
+        "externalLinks": [
+          {
+            "href": "https://www.facebook.com/JayZ",
+            "meta": {
+              "type": "FACEBOOK"
+            }
+          },
+          {
+            "href": "https://www.instagram.com/jayz",
+            "meta": {
+              "type": "INSTAGRAM"
+            }
+          },
+          {
+            "href": "https://twitter.com/SC",
+            "meta": {
+              "type": "TWITTER"
+            }
+          },
+          {
+            "href": "https://tidal.com/browse/artist/7804",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "ownerType": "LABEL"
+      }
+    },
+    {
+      "id": "2xpmpI1s9DzI18vU2ijbhW",
+      "type": "artworks",
+      "attributes": {
+        "mediaType": "IMAGE",
+        "files": [
+          {
+            "href": "https://resources.tidal.com/images/fb00c346/224c/41d4/96d2/31ffb5a80e2d/1280x1280.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1280,
+              "height": 1280
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/fb00c346/224c/41d4/96d2/31ffb5a80e2d/1080x1080.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1080,
+              "height": 1080
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/fb00c346/224c/41d4/96d2/31ffb5a80e2d/750x750.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 750,
+              "height": 750
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/fb00c346/224c/41d4/96d2/31ffb5a80e2d/640x640.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 640,
+              "height": 640
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/fb00c346/224c/41d4/96d2/31ffb5a80e2d/320x320.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 320,
+              "height": 320
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/fb00c346/224c/41d4/96d2/31ffb5a80e2d/160x160.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 160,
+              "height": 160
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/fb00c346/224c/41d4/96d2/31ffb5a80e2d/80x80.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 80,
+              "height": 80
+            }
+          }
+        ],
+        "visualMetadata": {
+          "selectedPaletteColor": "#6A1917",
+          "blurHash": "U9E2wkx^00^*~X4m00-;Iqi_IAJ7}[_3%gnh",
+          "status": "OK"
+        }
+      }
+    },
+    {
+      "id": "2xpmpI1s9DzI1ACAHvxnUG",
+      "type": "artworks",
+      "attributes": {
+        "mediaType": "IMAGE",
+        "files": [
+          {
+            "href": "https://resources.tidal.com/images/b15d9235/6b40/4ecd/bcb2/a57af7d96583/1280x1280.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1280,
+              "height": 1280
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/b15d9235/6b40/4ecd/bcb2/a57af7d96583/1080x1080.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1080,
+              "height": 1080
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/b15d9235/6b40/4ecd/bcb2/a57af7d96583/750x750.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 750,
+              "height": 750
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/b15d9235/6b40/4ecd/bcb2/a57af7d96583/640x640.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 640,
+              "height": 640
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/b15d9235/6b40/4ecd/bcb2/a57af7d96583/320x320.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 320,
+              "height": 320
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/b15d9235/6b40/4ecd/bcb2/a57af7d96583/160x160.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 160,
+              "height": 160
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/b15d9235/6b40/4ecd/bcb2/a57af7d96583/80x80.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 80,
+              "height": 80
+            }
+          }
+        ],
+        "visualMetadata": {
+          "selectedPaletteColor": "#5B4E43",
+          "blurHash": "U47B1N569F-o9Fxu%MV[0K%1xuIp_MMyIot6",
+          "status": "OK"
+        }
+      }
+    },
+    {
+      "id": "iWOu0yW0IPRgt2c2hmYo",
+      "type": "artworks",
+      "attributes": {
+        "mediaType": "IMAGE",
+        "files": [
+          {
+            "href": "https://resources.tidal.com/images/07b0b346/1b3c/4b0d/8b33/beee763a6b70/1280x1280.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1280,
+              "height": 1280
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/07b0b346/1b3c/4b0d/8b33/beee763a6b70/1080x1080.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1080,
+              "height": 1080
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/07b0b346/1b3c/4b0d/8b33/beee763a6b70/750x750.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 750,
+              "height": 750
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/07b0b346/1b3c/4b0d/8b33/beee763a6b70/640x640.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 640,
+              "height": 640
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/07b0b346/1b3c/4b0d/8b33/beee763a6b70/320x320.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 320,
+              "height": 320
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/07b0b346/1b3c/4b0d/8b33/beee763a6b70/160x160.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 160,
+              "height": 160
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/07b0b346/1b3c/4b0d/8b33/beee763a6b70/80x80.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 80,
+              "height": 80
+            }
+          }
+        ],
+        "visualMetadata": {
+          "selectedPaletteColor": "#212220",
+          "blurHash": "UBE:3w?v009FIUjFoes:00j@%Mxu_NkWE1M{",
+          "status": "OK"
+        }
+      }
+    },
+    {
+      "id": "iWOu0yW0IPWrud9ZmzvZ",
+      "type": "artworks",
+      "attributes": {
+        "mediaType": "IMAGE",
+        "files": [
+          {
+            "href": "https://resources.tidal.com/images/bf6e9517/6e06/4d4b/9c0c/80ab64add945/1280x1280.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1280,
+              "height": 1280
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/bf6e9517/6e06/4d4b/9c0c/80ab64add945/1080x1080.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1080,
+              "height": 1080
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/bf6e9517/6e06/4d4b/9c0c/80ab64add945/750x750.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 750,
+              "height": 750
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/bf6e9517/6e06/4d4b/9c0c/80ab64add945/640x640.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 640,
+              "height": 640
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/bf6e9517/6e06/4d4b/9c0c/80ab64add945/320x320.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 320,
+              "height": 320
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/bf6e9517/6e06/4d4b/9c0c/80ab64add945/160x160.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 160,
+              "height": 160
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/bf6e9517/6e06/4d4b/9c0c/80ab64add945/80x80.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 80,
+              "height": 80
+            }
+          }
+        ],
+        "visualMetadata": {
+          "selectedPaletteColor": "#5F2731",
+          "blurHash": "UKEVc}%MtmtQ_Nj[RPWAXmayV@n*$QayS1WV",
+          "status": "OK"
+        }
+      }
+    },
+    {
+      "id": "iWOu0yW0IPWrvFrxp2EK",
+      "type": "artworks",
+      "attributes": {
+        "mediaType": "IMAGE",
+        "files": [
+          {
+            "href": "https://resources.tidal.com/images/4944372b/dee2/4f19/b20c/88806773c2ae/1280x1280.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1280,
+              "height": 1280
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/4944372b/dee2/4f19/b20c/88806773c2ae/1080x1080.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1080,
+              "height": 1080
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/4944372b/dee2/4f19/b20c/88806773c2ae/750x750.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 750,
+              "height": 750
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/4944372b/dee2/4f19/b20c/88806773c2ae/640x640.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 640,
+              "height": 640
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/4944372b/dee2/4f19/b20c/88806773c2ae/320x320.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 320,
+              "height": 320
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/4944372b/dee2/4f19/b20c/88806773c2ae/160x160.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 160,
+              "height": 160
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/4944372b/dee2/4f19/b20c/88806773c2ae/80x80.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 80,
+              "height": 80
+            }
+          }
+        ],
+        "visualMetadata": {
+          "selectedPaletteColor": "#0A4576",
+          "blurHash": "U79j1GNI00$zw~jubYoe03s:~ANbF|a}n4Rj",
+          "status": "OK"
+        }
+      }
+    },
+    {
+      "id": "iWOu0yW0IPWtCsGJBIu9",
+      "type": "artworks",
+      "attributes": {
+        "mediaType": "IMAGE",
+        "files": [
+          {
+            "href": "https://resources.tidal.com/images/897a9eae/4687/487e/b9f6/17517f4bfe34/1280x1280.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1280,
+              "height": 1280
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/897a9eae/4687/487e/b9f6/17517f4bfe34/1080x1080.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1080,
+              "height": 1080
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/897a9eae/4687/487e/b9f6/17517f4bfe34/750x750.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 750,
+              "height": 750
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/897a9eae/4687/487e/b9f6/17517f4bfe34/640x640.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 640,
+              "height": 640
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/897a9eae/4687/487e/b9f6/17517f4bfe34/320x320.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 320,
+              "height": 320
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/897a9eae/4687/487e/b9f6/17517f4bfe34/160x160.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 160,
+              "height": 160
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/897a9eae/4687/487e/b9f6/17517f4bfe34/80x80.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 80,
+              "height": 80
+            }
+          }
+        ],
+        "visualMetadata": {
+          "selectedPaletteColor": "#766436",
+          "blurHash": "UFGR#LIn-;?H00?bbdWA~qR+%LkC?Hs;sSS5",
+          "status": "OK"
+        }
+      }
+    },
+    {
+      "id": "iWOu0yW0IPWtCsdmnhEH",
+      "type": "artworks",
+      "attributes": {
+        "mediaType": "IMAGE",
+        "files": [
+          {
+            "href": "https://resources.tidal.com/images/75055e7e/e0a2/42bf/85c5/ffce46bc1733/1280x1280.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1280,
+              "height": 1280
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/75055e7e/e0a2/42bf/85c5/ffce46bc1733/1080x1080.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1080,
+              "height": 1080
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/75055e7e/e0a2/42bf/85c5/ffce46bc1733/750x750.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 750,
+              "height": 750
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/75055e7e/e0a2/42bf/85c5/ffce46bc1733/640x640.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 640,
+              "height": 640
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/75055e7e/e0a2/42bf/85c5/ffce46bc1733/320x320.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 320,
+              "height": 320
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/75055e7e/e0a2/42bf/85c5/ffce46bc1733/160x160.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 160,
+              "height": 160
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/75055e7e/e0a2/42bf/85c5/ffce46bc1733/80x80.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 80,
+              "height": 80
+            }
+          }
+        ],
+        "visualMetadata": {
+          "selectedPaletteColor": "#9E0102",
+          "blurHash": "UNJHB*?H4mkD00Mx-=adv#ofNZs:~WofR%nj",
+          "status": "OK"
+        }
+      }
+    },
+    {
+      "id": "iWOu0yW0IPWvlUBVeSYy",
+      "type": "artworks",
+      "attributes": {
+        "mediaType": "IMAGE",
+        "files": [
+          {
+            "href": "https://resources.tidal.com/images/fa3faea6/4e52/4629/a500/c69289b7f1dc/1280x1280.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1280,
+              "height": 1280
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/fa3faea6/4e52/4629/a500/c69289b7f1dc/1080x1080.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1080,
+              "height": 1080
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/fa3faea6/4e52/4629/a500/c69289b7f1dc/750x750.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 750,
+              "height": 750
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/fa3faea6/4e52/4629/a500/c69289b7f1dc/640x640.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 640,
+              "height": 640
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/fa3faea6/4e52/4629/a500/c69289b7f1dc/320x320.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 320,
+              "height": 320
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/fa3faea6/4e52/4629/a500/c69289b7f1dc/160x160.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 160,
+              "height": 160
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/fa3faea6/4e52/4629/a500/c69289b7f1dc/80x80.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 80,
+              "height": 80
+            }
+          }
+        ],
+        "visualMetadata": {
+          "selectedPaletteColor": "#767904",
+          "blurHash": "U+M@lzax~qogayj[offP-;j[M{axoeaxj]j]",
+          "status": "OK"
+        }
+      }
+    },
+    {
+      "id": "iWOu0yW0IPWx41tXpzcn",
+      "type": "artworks",
+      "attributes": {
+        "mediaType": "IMAGE",
+        "files": [
+          {
+            "href": "https://resources.tidal.com/images/7c298a27/caec/4058/9a7b/5f34cfd2c857/1280x1280.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1280,
+              "height": 1280
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/7c298a27/caec/4058/9a7b/5f34cfd2c857/1080x1080.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1080,
+              "height": 1080
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/7c298a27/caec/4058/9a7b/5f34cfd2c857/750x750.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 750,
+              "height": 750
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/7c298a27/caec/4058/9a7b/5f34cfd2c857/640x640.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 640,
+              "height": 640
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/7c298a27/caec/4058/9a7b/5f34cfd2c857/320x320.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 320,
+              "height": 320
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/7c298a27/caec/4058/9a7b/5f34cfd2c857/160x160.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 160,
+              "height": 160
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/7c298a27/caec/4058/9a7b/5f34cfd2c857/80x80.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 80,
+              "height": 80
+            }
+          }
+        ],
+        "visualMetadata": {
+          "selectedPaletteColor": "#886C56",
+          "blurHash": "UOQkZ#t6t6oL~AWVWVj[E3j@s.jtNHj[oLay",
+          "status": "OK"
+        }
+      }
+    },
+    {
+      "id": "iWOu0yW0IPWyLeDG039U",
+      "type": "artworks",
+      "attributes": {
+        "mediaType": "IMAGE",
+        "files": [
+          {
+            "href": "https://resources.tidal.com/images/c428fcef/c562/42d7/b083/1d4749145515/1280x1280.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1280,
+              "height": 1280
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/c428fcef/c562/42d7/b083/1d4749145515/1080x1080.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1080,
+              "height": 1080
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/c428fcef/c562/42d7/b083/1d4749145515/750x750.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 750,
+              "height": 750
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/c428fcef/c562/42d7/b083/1d4749145515/640x640.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 640,
+              "height": 640
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/c428fcef/c562/42d7/b083/1d4749145515/320x320.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 320,
+              "height": 320
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/c428fcef/c562/42d7/b083/1d4749145515/160x160.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 160,
+              "height": 160
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/c428fcef/c562/42d7/b083/1d4749145515/80x80.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 80,
+              "height": 80
+            }
+          }
+        ],
+        "visualMetadata": {
+          "selectedPaletteColor": "#8C6A36",
+          "blurHash": "U:M=2cWXr?W;}=oLjboJotkCbbe:J7W:S2ay",
+          "status": "OK"
+        }
+      }
+    },
+    {
+      "id": "iWOu0yW0IPWyLeakie0H",
+      "type": "artworks",
+      "attributes": {
+        "mediaType": "IMAGE",
+        "files": [
+          {
+            "href": "https://resources.tidal.com/images/44c611a6/4234/4ef8/a0fd/6835a0e651d2/1280x1280.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1280,
+              "height": 1280
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/44c611a6/4234/4ef8/a0fd/6835a0e651d2/1080x1080.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1080,
+              "height": 1080
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/44c611a6/4234/4ef8/a0fd/6835a0e651d2/750x750.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 750,
+              "height": 750
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/44c611a6/4234/4ef8/a0fd/6835a0e651d2/640x640.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 640,
+              "height": 640
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/44c611a6/4234/4ef8/a0fd/6835a0e651d2/320x320.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 320,
+              "height": 320
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/44c611a6/4234/4ef8/a0fd/6835a0e651d2/160x160.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 160,
+              "height": 160
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/44c611a6/4234/4ef8/a0fd/6835a0e651d2/80x80.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 80,
+              "height": 80
+            }
+          }
+        ],
+        "visualMetadata": {
+          "selectedPaletteColor": "#9D1217",
+          "blurHash": "U7J6?4My?_?b}RW99ax__jwtx^N2EnxGjEVr",
+          "status": "OK"
+        }
+      }
+    },
+    {
+      "id": "iWOu0yW0IPWyMGvac4sW",
+      "type": "artworks",
+      "attributes": {
+        "mediaType": "IMAGE",
+        "files": [
+          {
+            "href": "https://resources.tidal.com/images/669c96ae/b6c6/4945/bced/21d8fe026d80/1280x1280.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1280,
+              "height": 1280
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/669c96ae/b6c6/4945/bced/21d8fe026d80/1080x1080.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1080,
+              "height": 1080
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/669c96ae/b6c6/4945/bced/21d8fe026d80/750x750.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 750,
+              "height": 750
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/669c96ae/b6c6/4945/bced/21d8fe026d80/640x640.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 640,
+              "height": 640
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/669c96ae/b6c6/4945/bced/21d8fe026d80/320x320.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 320,
+              "height": 320
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/669c96ae/b6c6/4945/bced/21d8fe026d80/160x160.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 160,
+              "height": 160
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/669c96ae/b6c6/4945/bced/21d8fe026d80/80x80.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 80,
+              "height": 80
+            }
+          }
+        ],
+        "visualMetadata": {
+          "selectedPaletteColor": "#4F352D",
+          "blurHash": "U9Fht=4n9u~oM~IUoytQ01x]tQD*4U_2NG9G",
+          "status": "OK"
+        }
+      }
+    },
+    {
+      "id": "iWOu0yW0IPWyNCvVe38j",
+      "type": "artworks",
+      "attributes": {
+        "mediaType": "IMAGE",
+        "files": [
+          {
+            "href": "https://resources.tidal.com/images/3d210d93/691f/4cf0/8cef/5c2c7aab7bc1/1280x1280.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1280,
+              "height": 1280
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/3d210d93/691f/4cf0/8cef/5c2c7aab7bc1/1080x1080.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 1080,
+              "height": 1080
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/3d210d93/691f/4cf0/8cef/5c2c7aab7bc1/750x750.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 750,
+              "height": 750
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/3d210d93/691f/4cf0/8cef/5c2c7aab7bc1/640x640.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 640,
+              "height": 640
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/3d210d93/691f/4cf0/8cef/5c2c7aab7bc1/320x320.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 320,
+              "height": 320
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/3d210d93/691f/4cf0/8cef/5c2c7aab7bc1/160x160.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 160,
+              "height": 160
+            }
+          },
+          {
+            "href": "https://resources.tidal.com/images/3d210d93/691f/4cf0/8cef/5c2c7aab7bc1/80x80.jpg",
+            "type": "image/jpeg",
+            "meta": {
+              "width": 80,
+              "height": 80
+            }
+          }
+        ],
+        "visualMetadata": {
+          "selectedPaletteColor": "#9D1217",
+          "blurHash": "U7J6?4My?_?b}RW99ax__jwtx^N2EnxGjEVr",
+          "status": "OK"
+        }
+      }
+    },
+    {
+      "id": "134832277",
+      "type": "tracks",
+      "attributes": {
+        "title": "Love Is Only a Feeling",
+        "version": null,
+        "isrc": "QMKSC1700112",
+        "duration": "PT2M32S",
+        "copyright": {
+          "text": "© 2017 Pro Era / Cinematic Music Group"
+        },
+        "explicit": true,
+        "popularity": 0.6233300182859964,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/134832277",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2020-03-20T02:14:24Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "4793499",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/134832277/relationships/artists?countryCode=IT"
+          }
+        },
+        "albums": {
+          "data": [
+            {
+              "id": "134832276",
+              "type": "albums"
+            }
+          ],
+          "links": {
+            "self": "/tracks/134832277/relationships/albums?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "135450381",
+      "type": "tracks",
+      "attributes": {
+        "title": "500 Benz",
+        "version": null,
+        "isrc": "QMKSC1700111",
+        "duration": "PT3M22S",
+        "copyright": {
+          "text": "© 2017 Pro Era / Cinematic Music Group"
+        },
+        "explicit": true,
+        "popularity": 0.43597791768225963,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/135450381",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2020-03-25T20:21:38Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "4793499",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/135450381/relationships/artists?countryCode=IT"
+          }
+        },
+        "albums": {
+          "data": [
+            {
+              "id": "135450380",
+              "type": "albums"
+            }
+          ],
+          "links": {
+            "self": "/tracks/135450381/relationships/albums?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "68005599",
+      "type": "tracks",
+      "attributes": {
+        "title": "Deja Vu",
+        "version": null,
+        "isrc": "QMJMT1601080",
+        "duration": "PT4M25S",
+        "copyright": {
+          "text": "℗ 2016 Dreamville, Inc., under exclusive license to Roc Nation Records"
+        },
+        "explicit": true,
+        "popularity": 0.5819506720101231,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/68005599",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2016-12-07T23:52:26Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "3652822",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/68005599/relationships/artists?countryCode=IT"
+          }
+        },
+        "albums": {
+          "data": [
+            {
+              "id": "68005596",
+              "type": "albums"
+            }
+          ],
+          "links": {
+            "self": "/tracks/68005599/relationships/albums?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "68005603",
+      "type": "tracks",
+      "attributes": {
+        "title": "Neighbors",
+        "version": null,
+        "isrc": "QMJMT1601088",
+        "duration": "PT3M37S",
+        "copyright": {
+          "text": "℗ 2016 Dreamville, Inc., under exclusive license to Roc Nation Records"
+        },
+        "explicit": true,
+        "popularity": 0.628470248501166,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/68005603",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2016-12-07T23:52:26Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "3652822",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/68005603/relationships/artists?countryCode=IT"
+          }
+        },
+        "albums": {
+          "data": [
+            {
+              "id": "68005596",
+              "type": "albums"
+            }
+          ],
+          "links": {
+            "self": "/tracks/68005603/relationships/albums?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "68005606",
+      "type": "tracks",
+      "attributes": {
+        "title": "4 Your Eyez Only",
+        "version": null,
+        "isrc": "QMJMT1601094",
+        "duration": "PT8M50S",
+        "copyright": {
+          "text": "℗ 2016 Dreamville, Inc., under exclusive license to Roc Nation Records"
+        },
+        "explicit": true,
+        "popularity": 0.5970055756064687,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/68005606",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2016-12-07T23:52:26Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "3652822",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/68005606/relationships/artists?countryCode=IT"
+          }
+        },
+        "albums": {
+          "data": [
+            {
+              "id": "68005596",
+              "type": "albums"
+            }
+          ],
+          "links": {
+            "self": "/tracks/68005606/relationships/albums?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "71514247",
+      "type": "tracks",
+      "attributes": {
+        "title": "Santorini Greece",
+        "version": null,
+        "isrc": "USSM11701693",
+        "duration": "PT5M33S",
+        "copyright": {
+          "text": "(P) 2017 Epic Records, a division of Sony Music Entertainment"
+        },
+        "explicit": true,
+        "popularity": 0.4318477505227401,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/71514247",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-03-14T19:05:02Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "24995",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/71514247/relationships/artists?countryCode=IT"
+          }
+        },
+        "albums": {
+          "data": [
+            {
+              "id": "71514245",
+              "type": "albums"
+            }
+          ],
+          "links": {
+            "self": "/tracks/71514247/relationships/albums?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "71717729",
+      "type": "tracks",
+      "attributes": {
+        "title": "Free Smoke",
+        "version": null,
+        "isrc": "USCM51700056",
+        "duration": "PT3M39S",
+        "copyright": {
+          "text": "℗ 2017 Young Money Entertainment/Cash Money Records"
+        },
+        "explicit": true,
+        "popularity": 0.5944044898679641,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/71717729",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-03-18T16:21:58Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "3632070",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/71717729/relationships/artists?countryCode=IT"
+          }
+        },
+        "albums": {
+          "data": [
+            {
+              "id": "71717728",
+              "type": "albums"
+            }
+          ],
+          "links": {
+            "self": "/tracks/71717729/relationships/albums?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "71717750",
+      "type": "tracks",
+      "attributes": {
+        "title": "Do Not Disturb",
+        "version": null,
+        "isrc": "USCM51700049",
+        "duration": "PT4M44S",
+        "copyright": {
+          "text": "℗ 2017 Young Money Entertainment/Cash Money Records"
+        },
+        "explicit": true,
+        "popularity": 0.6767863792404574,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/71717750",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-03-18T16:21:58Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "3632070",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/71717750/relationships/artists?countryCode=IT"
+          }
+        },
+        "albums": {
+          "data": [
+            {
+              "id": "71717728",
+              "type": "albums"
+            }
+          ],
+          "links": {
+            "self": "/tracks/71717750/relationships/albums?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "72642070",
+      "type": "tracks",
+      "attributes": {
+        "title": "Biking",
+        "version": null,
+        "isrc": "QM24S1701050",
+        "duration": "PT4M38S",
+        "copyright": {
+          "text": "2017 Blonded"
+        },
+        "explicit": true,
+        "popularity": 0.5983669847600824,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/72642070",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-04-10T15:18:42Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "7804",
+              "type": "artists"
+            },
+            {
+              "id": "3997333",
+              "type": "artists"
+            },
+            {
+              "id": "3908662",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/72642070/relationships/artists?countryCode=IT"
+          }
+        },
+        "albums": {
+          "data": [
+            {
+              "id": "72642069",
+              "type": "albums"
+            }
+          ],
+          "links": {
+            "self": "/tracks/72642070/relationships/albums?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "72694583",
+      "type": "tracks",
+      "attributes": {
+        "title": "ELEMENT.",
+        "version": null,
+        "isrc": "USUM71703083",
+        "duration": "PT3M29S",
+        "copyright": {
+          "text": "℗ 2017 Aftermath/Interscope (Top Dawg Entertainment)"
+        },
+        "explicit": true,
+        "popularity": 0.7215109494468289,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/72694583",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-04-11T20:11:56Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "3816041",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/72694583/relationships/artists?countryCode=IT"
+          }
+        },
+        "albums": {
+          "data": [
+            {
+              "id": "72694579",
+              "type": "albums"
+            }
+          ],
+          "links": {
+            "self": "/tracks/72694583/relationships/albums?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "72694584",
+      "type": "tracks",
+      "attributes": {
+        "title": "FEEL.",
+        "version": null,
+        "isrc": "USUM71703082",
+        "duration": "PT3M35S",
+        "copyright": {
+          "text": "℗ 2017 Aftermath/Interscope (Top Dawg Entertainment)"
+        },
+        "explicit": true,
+        "popularity": 0.6751946895787269,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/72694584",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-04-11T20:11:56Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "3816041",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/72694584/relationships/artists?countryCode=IT"
+          }
+        },
+        "albums": {
+          "data": [
+            {
+              "id": "72694579",
+              "type": "albums"
+            }
+          ],
+          "links": {
+            "self": "/tracks/72694584/relationships/albums?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "72694593",
+      "type": "tracks",
+      "attributes": {
+        "title": "DUCKWORTH.",
+        "version": null,
+        "isrc": "USUM71703379",
+        "duration": "PT4M9S",
+        "copyright": {
+          "text": "℗ 2017 Aftermath/Interscope (Top Dawg Entertainment)"
+        },
+        "explicit": true,
+        "popularity": 0.6740242447745461,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/72694593",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-04-11T20:11:56Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "3816041",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/72694593/relationships/artists?countryCode=IT"
+          }
+        },
+        "albums": {
+          "data": [
+            {
+              "id": "72694579",
+              "type": "albums"
+            }
+          ],
+          "links": {
+            "self": "/tracks/72694593/relationships/albums?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "74284059",
+      "type": "tracks",
+      "attributes": {
+        "title": "Mask Off (feat. Kendrick Lamar)",
+        "version": "Remix",
+        "isrc": "USSM11704884",
+        "duration": "PT4M18S",
+        "copyright": {
+          "text": "(P) 2017 Epic Records, a division of Sony Music Entertainment with A1 / Freebandz"
+        },
+        "explicit": true,
+        "popularity": 0.594717373082979,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/74284059",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-05-22T23:40:08Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "3618971",
+              "type": "artists"
+            },
+            {
+              "id": "3816041",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/74284059/relationships/artists?countryCode=IT"
+          }
+        },
+        "albums": {
+          "data": [
+            {
+              "id": "74284058",
+              "type": "albums"
+            }
+          ],
+          "links": {
+            "self": "/tracks/74284059/relationships/albums?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "75413012",
+      "type": "tracks",
+      "attributes": {
+        "title": "Kill Jay Z",
+        "version": null,
+        "isrc": "QMJMT1701229",
+        "duration": "PT2M58S",
+        "copyright": {
+          "text": "(p)(c) 2017 S. CARTER ENTERPRISES, LLC. MARKETED BY ROC NATION & DISTRIBUTED BY ROC NATION/UMG RECORDINGS INC."
+        },
+        "explicit": true,
+        "popularity": 0.5168414088251008,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/75413012",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-06-22T17:00:57Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "7804",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/75413012/relationships/artists?countryCode=IT"
+          }
+        },
+        "albums": {
+          "data": [
+            {
+              "id": "75413011",
+              "type": "albums"
+            }
+          ],
+          "links": {
+            "self": "/tracks/75413012/relationships/albums?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "75413015",
+      "type": "tracks",
+      "attributes": {
+        "title": "Caught Their Eyes",
+        "version": null,
+        "isrc": "QMJMT1701235",
+        "duration": "PT3M26S",
+        "copyright": {
+          "text": "(p)(c) 2017 S. CARTER ENTERPRISES, LLC. MARKETED BY ROC NATION & DISTRIBUTED BY ROC NATION/UMG RECORDINGS INC."
+        },
+        "explicit": true,
+        "popularity": 0.5551528760092993,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/75413015",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-06-22T17:00:57Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "7804",
+              "type": "artists"
+            },
+            {
+              "id": "3997333",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/75413015/relationships/artists?countryCode=IT"
+          }
+        },
+        "albums": {
+          "data": [
+            {
+              "id": "75413011",
+              "type": "albums"
+            }
+          ],
+          "links": {
+            "self": "/tracks/75413015/relationships/albums?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "75413016",
+      "type": "tracks",
+      "attributes": {
+        "title": "4:44",
+        "version": null,
+        "isrc": "QMJMT1701237",
+        "duration": "PT4M44S",
+        "copyright": {
+          "text": "(p)(c) 2017 S. CARTER ENTERPRISES, LLC. MARKETED BY ROC NATION & DISTRIBUTED BY ROC NATION/UMG RECORDINGS INC."
+        },
+        "explicit": true,
+        "popularity": 0.6880688374378553,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/75413016",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-06-22T17:00:57Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "7804",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/75413016/relationships/artists?countryCode=IT"
+          }
+        },
+        "albums": {
+          "data": [
+            {
+              "id": "75413011",
+              "type": "albums"
+            }
+          ],
+          "links": {
+            "self": "/tracks/75413016/relationships/albums?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "76331733",
+      "type": "tracks",
+      "attributes": {
+        "title": "Who Dat Boy (feat. A$AP Rocky)",
+        "version": null,
+        "isrc": "USQX91701276",
+        "duration": "PT3M25S",
+        "copyright": {
+          "text": "(P) 2017 Columbia Records, a Division of Sony Music Entertainment, as exclusive licensee"
+        },
+        "explicit": true,
+        "popularity": 0.6666760014561077,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/76331733",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-07-14T20:40:03Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "3908662",
+              "type": "artists"
+            },
+            {
+              "id": "4315444",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/76331733/relationships/artists?countryCode=IT"
+          }
+        },
+        "albums": {
+          "data": [
+            {
+              "id": "76331728",
+              "type": "albums"
+            }
+          ],
+          "links": {
+            "self": "/tracks/76331733/relationships/albums?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "76384504",
+      "type": "tracks",
+      "attributes": {
+        "title": "Young Black America (feat. The-Dream)",
+        "version": null,
+        "isrc": "USAT21701600",
+        "duration": "PT4M1S",
+        "copyright": {
+          "text": "℗ 2017 Maybach Music Group, LLC/Atlantic Recording Corporation"
+        },
+        "explicit": true,
+        "popularity": 0.09806186484602884,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/76384504",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-07-17T16:10:35Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "3966408",
+              "type": "artists"
+            },
+            {
+              "id": "3502522",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/76384504/relationships/artists?countryCode=IT"
+          }
+        },
+        "albums": {
+          "data": [
+            {
+              "id": "76384491",
+              "type": "albums"
+            }
+          ],
+          "links": {
+            "self": "/tracks/76384504/relationships/albums?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "76531925",
+      "type": "tracks",
+      "attributes": {
+        "title": "Say I Didn't",
+        "version": null,
+        "isrc": "QMJMT1701268",
+        "duration": "PT5M15S",
+        "copyright": {
+          "text": "℗ 2017 Roc Nation Records, LLC"
+        },
+        "explicit": true,
+        "popularity": 0.3148812980897485,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/76531925",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-07-21T00:58:30Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "5034071",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/76531925/relationships/artists?countryCode=IT"
+          }
+        },
+        "albums": {
+          "data": [
+            {
+              "id": "76531924",
+              "type": "albums"
+            }
+          ],
+          "links": {
+            "self": "/tracks/76531925/relationships/albums?countryCode=IT"
+          }
+        }
+      }
+    },
+    {
+      "id": "76827454",
+      "type": "tracks",
+      "attributes": {
+        "title": "1942 Flows",
+        "version": null,
+        "isrc": "USAT21701601",
+        "duration": "PT4M43S",
+        "copyright": {
+          "text": "℗ 2017 Maybach Music Group, LLC/Atlantic Recording Corporation"
+        },
+        "explicit": true,
+        "popularity": 0.39657718692996535,
+        "accessType": "PUBLIC",
+        "availability": [
+          "STREAM",
+          "DJ"
+        ],
+        "mediaTags": [
+          "LOSSLESS"
+        ],
+        "externalLinks": [
+          {
+            "href": "https://tidal.com/browse/track/76827454",
+            "meta": {
+              "type": "TIDAL_SHARING"
+            }
+          }
+        ],
+        "spotlighted": false,
+        "createdAt": "2017-07-28T15:20:47Z"
+      },
+      "relationships": {
+        "artists": {
+          "data": [
+            {
+              "id": "3966408",
+              "type": "artists"
+            }
+          ],
+          "links": {
+            "self": "/tracks/76827454/relationships/artists?countryCode=IT"
+          }
+        },
+        "albums": {
+          "data": [
+            {
+              "id": "76827449",
+              "type": "albums"
+            }
+          ],
+          "links": {
+            "self": "/tracks/76827454/relationships/albums?countryCode=IT"
+          }
+        }
+      }
+    }
+  ]
+}

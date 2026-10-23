@@ -1,0 +1,11 @@
+{
+  "errors": [
+    {
+      "code": "INVALID_RESOURCE_ID",
+      "detail": "Invalid resource ID: Must be a positive integer",
+      "source": {
+        "pointer": "data/id"
+      }
+    }
+  ]
+}
