@@ -42,6 +42,9 @@ def getGitVersion() {
 
 var isMavenDefined = findProperty("MAVEN_USERNAME") != null && findProperty("MAVEN_PASSWORD") != null
 var isLavalinkMavenDefined = findProperty("LAVALINK_MAVEN_USERNAME") != null && findProperty("LAVALINK_MAVEN_PASSWORD") != null
+// owner/repo + token, set by .github/workflows/github-packages.yml
+var githubPackagesRepository = findProperty("GITHUB_PACKAGES_REPOSITORY")
+var githubPackagesToken = findProperty("GITHUB_PACKAGES_TOKEN")
 
 subprojects {
     apply plugin: "java"
@@ -82,6 +85,16 @@ subprojects {
                     credentials {
                         username = findProperty("LAVALINK_MAVEN_USERNAME")
                         password = findProperty("LAVALINK_MAVEN_PASSWORD")
+                    }
+                }
+            }
+            if (githubPackagesRepository && githubPackagesToken && name == "plugin") {
+                maven {
+                    name = "GitHubPackages"
+                    url = "https://maven.pkg.github.com/" + githubPackagesRepository
+                    credentials {
+                        username = findProperty("GITHUB_PACKAGES_USERNAME") ?: "github-actions"
+                        password = githubPackagesToken
                     }
                 }
             }

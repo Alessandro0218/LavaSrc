@@ -1,0 +1,44 @@
+name: GitHub Packages
+# A pushed tag (e.g. 4.8.3-tidal.2) publishes the Lavalink plugin jar to this
+# repository's Maven registry on GitHub Packages, where Orbyx's lavalink image
+# downloads it at build time (works the same once the repository is private).
+on:
+  push:
+    tags: [ '*' ]
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # the version comes from `git describe --exact-match --tags`
+          fetch-depth: 0
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: 17
+          cache: gradle
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Test and publish the plugin
+        env:
+          GITHUB_PACKAGES_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: >
+          ./gradlew :main:test :plugin:publishAllPublicationsToGitHubPackagesRepository --no-daemon
+          -PGITHUB_PACKAGES_REPOSITORY=${{ github.repository }}
+          -PGITHUB_PACKAGES_USERNAME=${{ github.actor }}
+          -PGITHUB_PACKAGES_TOKEN=$GITHUB_PACKAGES_TOKEN
+
+      - name: Upload plugin jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: lavasrc-plugin-${{ github.ref_name }}
+          path: plugin/build/libs/lavasrc-plugin-*.jar
