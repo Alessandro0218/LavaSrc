@@ -14,11 +14,12 @@ import java.nio.charset.StandardCharsets;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
 /**
- * Caches the OAuth 2.0 client credentials token for the Tidal v2 API.
+ * Caches the OAuth 2.0 access token for the Tidal v2 API (client credentials) or a web session (refresh token).
  * The token is renewed shortly before it expires; concurrent callers share a single refresh.
  * Neither the token nor the client secret are ever logged.
  */
@@ -78,27 +79,50 @@ public class TidalV2TokenManager {
 		return expiresIn.minus(margin);
 	}
 
+	/**
+	 * Creates a token manager that renews the access token of a user session (private API) with its refresh token.
+	 * The refresh token itself is never rotated here: TIDAL keeps it valid until the session is revoked.
+	 */
+	public static TidalV2TokenManager forWebSession(HttpInterfaceManager httpInterfaceManager, TidalWebSession session) {
+		return new TidalV2TokenManager(() -> requestToken(httpInterfaceManager, null, refreshTokenParams(session), "web session"), Clock.systemUTC());
+	}
+
+	static List<BasicNameValuePair> refreshTokenParams(TidalWebSession session) {
+		var params = new ArrayList<BasicNameValuePair>();
+		params.add(new BasicNameValuePair("grant_type", "refresh_token"));
+		params.add(new BasicNameValuePair("refresh_token", session.refreshToken));
+		params.add(new BasicNameValuePair("client_id", session.clientId));
+		if (session.hasClientSecret()) {
+			params.add(new BasicNameValuePair("client_secret", session.clientSecret));
+		}
+		return params;
+	}
+
 	private static TokenFetcher httpFetcher(HttpInterfaceManager httpInterfaceManager, String clientId, String clientSecret) {
 		var basicAuth = Base64.getEncoder().encodeToString((clientId + ":" + clientSecret).getBytes(StandardCharsets.UTF_8));
-		return () -> {
-			var request = new HttpPost(TOKEN_URL);
+		return () -> requestToken(httpInterfaceManager, basicAuth, List.of(new BasicNameValuePair("grant_type", "client_credentials")), "v2");
+	}
+
+	private static AccessToken requestToken(HttpInterfaceManager httpInterfaceManager, String basicAuth, List<BasicNameValuePair> params, String label) throws IOException {
+		var request = new HttpPost(TOKEN_URL);
+		if (basicAuth != null) {
 			request.setHeader("Authorization", "Basic " + basicAuth);
-			request.setEntity(new UrlEncodedFormEntity(List.of(new BasicNameValuePair("grant_type", "client_credentials")), StandardCharsets.UTF_8));
-			try (var response = httpInterfaceManager.getInterface().execute(request)) {
-				var statusCode = response.getStatusLine().getStatusCode();
-				var body = IOUtils.toString(response.getEntity().getContent(), StandardCharsets.UTF_8);
-				if (statusCode != 200) {
-					var error = errorCode(body);
-					throw new TidalApiException("Failed to obtain Tidal v2 access token: HTTP " + statusCode + (error == null ? "" : " (" + error + ")"), statusCode, true);
-				}
-				var json = JsonBrowser.parse(body);
-				var accessToken = json.get("access_token").text();
-				if (accessToken == null) {
-					throw new TidalApiException("Tidal v2 token response did not contain an access token", statusCode, true);
-				}
-				return new AccessToken(accessToken, json.get("expires_in").asLong(0));
+		}
+		request.setEntity(new UrlEncodedFormEntity(params, StandardCharsets.UTF_8));
+		try (var response = httpInterfaceManager.getInterface().execute(request)) {
+			var statusCode = response.getStatusLine().getStatusCode();
+			var body = IOUtils.toString(response.getEntity().getContent(), StandardCharsets.UTF_8);
+			if (statusCode != 200) {
+				var error = errorCode(body);
+				throw new TidalApiException("Failed to obtain Tidal " + label + " access token: HTTP " + statusCode + (error == null ? "" : " (" + error + ")"), statusCode, true);
 			}
-		};
+			var json = JsonBrowser.parse(body);
+			var accessToken = json.get("access_token").text();
+			if (accessToken == null) {
+				throw new TidalApiException("Tidal " + label + " token response did not contain an access token", statusCode, true);
+			}
+			return new AccessToken(accessToken, json.get("expires_in").asLong(0));
+		}
 	}
 
 	// only the OAuth error code (e.g. "invalid_client") is surfaced, never the rest of the body

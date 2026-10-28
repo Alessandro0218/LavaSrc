@@ -61,7 +61,10 @@ data class TidalConfig(
     val token: String? = null,
     val clientId: String? = null,
     val clientSecret: String? = null,
-    /** One of `auto`, `v1` or `v2`. */
+    val webClientId: String? = null,
+    val webClientSecret: String? = null,
+    val refreshToken: String? = null,
+    /** One of `auto`, `v1`, `v2` or `web`. */
     val apiVersion: String? = null,
 )
 

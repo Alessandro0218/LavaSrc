@@ -1,0 +1,30 @@
+{
+  "limit": 100,
+  "offset": 0,
+  "totalNumberOfItems": 4,
+  "items": [
+    {
+      "type": "track",
+      "item": {
+        "id": 75413016,
+        "title": "Kill Jay Z",
+        "duration": 178,
+        "isrc": "QMJMT1701229",
+        "url": "http://www.tidal.com/track/75413016",
+        "artists": [{"id": 7804, "name": "JAY Z"}],
+        "album": {"id": 75413011, "cover": "7c298a27-caec-4058-9a7b-5f34cfd2c857"}
+      }
+    },
+    {
+      "type": "video",
+      "item": {
+        "id": 99,
+        "title": "Music Video",
+        "duration": 240,
+        "url": "http://www.tidal.com/video/99",
+        "artists": [{"id": 7804, "name": "JAY Z"}],
+        "album": null
+      }
+    }
+  ]
+}

@@ -86,7 +86,56 @@ class TidalSourceManagerTest {
 	}
 
 	@Test
+	void webUsesTheSessionAndFallsBackToV2ThenV1() {
+		var session = new TidalWebSession("web-client", null, "refresh");
+
+		var withV2 = new TidalSourceManager(PROVIDERS, "US", unused -> null, "token", "id", "secret", session, TidalApiVersion.WEB);
+		assertEquals(TidalApiVersion.WEB, withV2.getActiveApiVersion());
+		assertEquals(TidalApiVersion.V2, withV2.getFallbackApiVersion());
+
+		var withV1 = new TidalSourceManager(PROVIDERS, "US", unused -> null, "token", null, null, session, TidalApiVersion.WEB);
+		assertEquals(TidalApiVersion.V1, withV1.getFallbackApiVersion());
+
+		var alone = new TidalSourceManager(PROVIDERS, "US", unused -> null, null, null, null, session, TidalApiVersion.WEB);
+		assertNull(alone.getFallbackApiVersion());
+
+		var auto = new TidalSourceManager(PROVIDERS, "US", unused -> null, null, "id", "secret", session, TidalApiVersion.AUTO);
+		assertEquals(TidalApiVersion.WEB, auto.getActiveApiVersion());
+	}
+
+	@Test
+	void webWithoutSessionStartsOnV2OrFails() {
+		var incomplete = new TidalWebSession("web-client", null, "");
+
+		var v2 = new TidalSourceManager(PROVIDERS, "US", unused -> null, null, "id", "secret", incomplete, TidalApiVersion.WEB);
+		assertEquals(TidalApiVersion.V2, v2.getActiveApiVersion());
+		assertNull(v2.getFallbackApiVersion());
+
+		assertThrows(IllegalArgumentException.class, () -> new TidalSourceManager(PROVIDERS, "US", unused -> null, "token", null, null, null, TidalApiVersion.WEB));
+	}
+
+	@Test
+	void refreshTokenSetAtRuntimeSwitchesToWeb() {
+		var manager = new TidalSourceManager(PROVIDERS, "US", unused -> null, null, "id", "secret", new TidalWebSession("web-client", null, null), TidalApiVersion.WEB);
+		assertEquals(TidalApiVersion.V2, manager.getActiveApiVersion());
+
+		manager.setWebSession(null, null, "refresh");
+		assertEquals(TidalApiVersion.WEB, manager.getActiveApiVersion());
+		assertEquals(TidalApiVersion.V2, manager.getFallbackApiVersion());
+	}
+
+	@Test
+	void fallsBackFromWebToV2() {
+		var v2 = new FakeClient(TidalApiVersion.V2, null);
+		var manager = new TidalSourceManager(new FakeClient(TidalApiVersion.WEB, new TidalApiException("HTTP 401", 401, true)), v2);
+
+		assertInstanceOf(AudioTrack.class, manager.loadItem(null, new AudioReference("https://tidal.com/browse/track/75413016", null)));
+		assertEquals(1, v2.calls.get());
+	}
+
+	@Test
 	void parsesApiVersionStrings() {
+		assertEquals(TidalApiVersion.WEB, TidalApiVersion.fromString("web"));
 		assertEquals(TidalApiVersion.AUTO, TidalApiVersion.fromString(null));
 		assertEquals(TidalApiVersion.AUTO, TidalApiVersion.fromString(" "));
 		assertEquals(TidalApiVersion.V1, TidalApiVersion.fromString("v1"));

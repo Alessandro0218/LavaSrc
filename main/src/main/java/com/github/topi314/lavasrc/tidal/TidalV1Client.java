@@ -105,7 +105,13 @@ public class TidalV1Client implements TidalApiClient {
 		if (itemInfoJson == null) {
 			return null;
 		}
+		return parseCollection(itemInfoJson, type, items);
+	}
 
+	/**
+	 * @param type {@code album} or {@code playlist}
+	 */
+	static TidalCollectionData parseCollection(JsonBrowser itemInfoJson, String type, List<TidalTrackData> items) {
 		String coverIdentifier;
 		String artistName;
 		if (type.equals("playlist")) {

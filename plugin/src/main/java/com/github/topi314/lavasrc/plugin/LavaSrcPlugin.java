@@ -18,6 +18,7 @@ import com.github.topi314.lavasrc.qobuz.QobuzAudioSourceManager;
 import com.github.topi314.lavasrc.spotify.SpotifySourceManager;
 import com.github.topi314.lavasrc.tidal.TidalApiVersion;
 import com.github.topi314.lavasrc.tidal.TidalSourceManager;
+import com.github.topi314.lavasrc.tidal.TidalWebSession;
 import com.github.topi314.lavasrc.vkmusic.VkMusicSourceManager;
 import com.github.topi314.lavasrc.yandexmusic.YandexMusicSourceManager;
 import com.github.topi314.lavasrc.youtube.YoutubeSearchManager;
@@ -161,9 +162,13 @@ public class LavaSrcPlugin implements AudioPlayerManagerConfiguration, SearchMan
 			}
 		}
 		if (sourcesConfig.isTidal()) {
-			this.tidal = new TidalSourceManager(pluginConfig.getProviders(), tidalConfig.getCountryCode(), unused -> this.manager, tidalConfig.getToken(), tidalConfig.getClientId(), tidalConfig.getClientSecret(), TidalApiVersion.fromString(tidalConfig.getApiVersion()));
+			var webSession = new TidalWebSession(tidalConfig.getWebClientId(), tidalConfig.getWebClientSecret(), tidalConfig.getRefreshToken());
+			this.tidal = new TidalSourceManager(pluginConfig.getProviders(), tidalConfig.getCountryCode(), unused -> this.manager, tidalConfig.getToken(), tidalConfig.getClientId(), tidalConfig.getClientSecret(), webSession, TidalApiVersion.fromString(tidalConfig.getApiVersion()));
 			if (tidalConfig.getSearchLimit() > 0) {
 				this.tidal.setSearchLimit(tidalConfig.getSearchLimit());
+			}
+			if (tidalConfig.getPlaylistLoadLimit() > 0) {
+				this.tidal.setPlaylistLoadLimit(tidalConfig.getPlaylistLoadLimit());
 			}
 		}
 		if (sourcesConfig.isQobuz()) {
@@ -365,6 +370,9 @@ public class LavaSrcPlugin implements AudioPlayerManagerConfiguration, SearchMan
 			}
 			if (tidalConfig.getClientId() != null && tidalConfig.getClientSecret() != null) {
 				this.tidal.setClientIdSecret(tidalConfig.getClientId(), tidalConfig.getClientSecret());
+			}
+			if (tidalConfig.getWebClientId() != null || tidalConfig.getWebClientSecret() != null || tidalConfig.getRefreshToken() != null) {
+				this.tidal.setWebSession(tidalConfig.getWebClientId(), tidalConfig.getWebClientSecret(), tidalConfig.getRefreshToken());
 			}
 			if (tidalConfig.getApiVersion() != null) {
 				this.tidal.setApiVersion(TidalApiVersion.fromString(tidalConfig.getApiVersion()));

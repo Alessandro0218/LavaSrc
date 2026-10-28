@@ -41,8 +41,10 @@ public class TidalSourceManager extends MirroringAudioSourceManager implements H
 	private String token;
 	private String clientId;
 	private String clientSecret;
+	private TidalWebSession webSession;
 	private TidalApiVersion apiVersion;
 	private int searchLimit = 6;
+	private int playlistLoadLimit = PLAYLIST_MAX_PAGE_ITEMS;
 
 	/**
 	 * @deprecated use {@link #TidalSourceManager(String[], String, Function, String, String, String, TidalApiVersion)}
@@ -59,24 +61,33 @@ public class TidalSourceManager extends MirroringAudioSourceManager implements H
 	 */
 	@Deprecated
 	public TidalSourceManager(String countryCode, Function<Void, AudioPlayerManager> audioPlayerManager, MirroringAudioTrackResolver mirroringAudioTrackResolver, String tidalToken) {
-		this(countryCode, audioPlayerManager, mirroringAudioTrackResolver, requireToken(tidalToken), null, null, TidalApiVersion.V1);
+		this(countryCode, audioPlayerManager, mirroringAudioTrackResolver, requireToken(tidalToken), null, null, null, TidalApiVersion.V1);
 	}
 
 	public TidalSourceManager(String[] providers, String countryCode, Function<Void, AudioPlayerManager> audioPlayerManager, String tidalToken, String clientId, String clientSecret, TidalApiVersion apiVersion) {
 		this(countryCode, audioPlayerManager, new DefaultMirroringAudioTrackResolver(providers), tidalToken, clientId, clientSecret, apiVersion);
 	}
 
+	public TidalSourceManager(String countryCode, Function<Void, AudioPlayerManager> audioPlayerManager, MirroringAudioTrackResolver mirroringAudioTrackResolver, String tidalToken, String clientId, String clientSecret, TidalApiVersion apiVersion) {
+		this(countryCode, audioPlayerManager, mirroringAudioTrackResolver, tidalToken, clientId, clientSecret, null, apiVersion);
+	}
+
+	public TidalSourceManager(String[] providers, String countryCode, Function<Void, AudioPlayerManager> audioPlayerManager, String tidalToken, String clientId, String clientSecret, TidalWebSession webSession, TidalApiVersion apiVersion) {
+		this(countryCode, audioPlayerManager, new DefaultMirroringAudioTrackResolver(providers), tidalToken, clientId, clientSecret, webSession, apiVersion);
+	}
+
 	/**
 	 * @param tidalToken   token for the unofficial API v1, may be null when clientId and clientSecret are set
 	 * @param clientId     client id for the official API v2 (developer.tidal.com), may be null when a token is set
 	 * @param clientSecret client secret for the official API v2, may be null when a token is set
-	 * @param apiVersion   which API to use, {@link TidalApiVersion#AUTO} prefers v2 and falls back to v1 when both are configured
+	 * @param webSession   user session for the private API, may be null
+	 * @param apiVersion   which API to use, {@link TidalApiVersion#AUTO} prefers web, then v2, and falls back to the next configured one
 	 */
-	public TidalSourceManager(String countryCode, Function<Void, AudioPlayerManager> audioPlayerManager, MirroringAudioTrackResolver mirroringAudioTrackResolver, String tidalToken, String clientId, String clientSecret, TidalApiVersion apiVersion) {
+	public TidalSourceManager(String countryCode, Function<Void, AudioPlayerManager> audioPlayerManager, MirroringAudioTrackResolver mirroringAudioTrackResolver, String tidalToken, String clientId, String clientSecret, TidalWebSession webSession, TidalApiVersion apiVersion) {
 		super(audioPlayerManager, mirroringAudioTrackResolver);
 		this.countryCode = (countryCode == null || countryCode.isEmpty()) ? "US" : countryCode;
 		this.httpInterfaceManager = HttpClientTools.createCookielessThreadLocalManager();
-		this.update(tidalToken, clientId, clientSecret, apiVersion == null ? TidalApiVersion.AUTO : apiVersion);
+		this.update(tidalToken, clientId, clientSecret, webSession, apiVersion == null ? TidalApiVersion.AUTO : apiVersion);
 	}
 
 	// visible for testing
@@ -98,16 +109,31 @@ public class TidalSourceManager extends MirroringAudioSourceManager implements H
 		this.searchLimit = searchLimit;
 	}
 
+	/**
+	 * Maximum number of tracks loaded from a playlist or mix.
+	 */
+	public void setPlaylistLoadLimit(int playlistLoadLimit) {
+		this.playlistLoadLimit = playlistLoadLimit;
+	}
+
 	public synchronized void setToken(String token) {
-		this.update(token, this.clientId, this.clientSecret, this.apiVersion);
+		this.update(token, this.clientId, this.clientSecret, this.webSession, this.apiVersion);
 	}
 
 	public synchronized void setClientIdSecret(String clientId, String clientSecret) {
-		this.update(this.token, clientId, clientSecret, this.apiVersion);
+		this.update(this.token, clientId, clientSecret, this.webSession, this.apiVersion);
+	}
+
+	/**
+	 * Updates the web session; null arguments keep their current value, so a new refresh token can be set on its own.
+	 */
+	public synchronized void setWebSession(String clientId, String clientSecret, String refreshToken) {
+		var current = this.webSession == null ? new TidalWebSession(null, null, null) : this.webSession;
+		this.update(this.token, this.clientId, this.clientSecret, current.with(clientId, clientSecret, refreshToken), this.apiVersion);
 	}
 
 	public synchronized void setApiVersion(TidalApiVersion apiVersion) {
-		this.update(this.token, this.clientId, this.clientSecret, apiVersion);
+		this.update(this.token, this.clientId, this.clientSecret, this.webSession, apiVersion);
 	}
 
 	/**
@@ -117,24 +143,56 @@ public class TidalSourceManager extends MirroringAudioSourceManager implements H
 		return this.clients.primary.getVersion();
 	}
 
-	boolean hasV1Fallback() {
-		return this.clients.fallback != null;
+	/**
+	 * @return the API version a failed request is retried on, or {@code null} if there is none
+	 */
+	public TidalApiVersion getFallbackApiVersion() {
+		var fallback = this.clients.fallback;
+		return fallback == null ? null : fallback.getVersion();
 	}
 
-	private synchronized void update(String token, String clientId, String clientSecret, TidalApiVersion apiVersion) {
+	boolean hasV1Fallback() {
+		return this.getFallbackApiVersion() == TidalApiVersion.V1;
+	}
+
+	private synchronized void update(String token, String clientId, String clientSecret, TidalWebSession webSession, TidalApiVersion apiVersion) {
 		// build the new clients first, so an invalid configuration leaves the current one in place
-		var clients = this.createClients(token, clientId, clientSecret, apiVersion);
+		var clients = this.createClients(token, clientId, clientSecret, webSession, apiVersion);
 		this.clients = clients;
 		this.token = token;
 		this.clientId = clientId;
 		this.clientSecret = clientSecret;
+		this.webSession = webSession;
 		this.apiVersion = apiVersion;
-		log.info("Using Tidal API {}{}", clients.primary.getVersion().name().toLowerCase(), clients.fallback != null ? " with fallback to v1" : "");
+		log.info("Using Tidal API {}{}", versionName(clients.primary), clients.fallback != null ? " with fallback to " + versionName(clients.fallback) : "");
 	}
 
-	private Clients createClients(String token, String clientId, String clientSecret, TidalApiVersion apiVersion) {
+	private static String versionName(TidalApiClient client) {
+		return client.getVersion().name().toLowerCase();
+	}
+
+	private Clients createClients(String token, String clientId, String clientSecret, TidalWebSession webSession, TidalApiVersion apiVersion) {
 		var hasToken = token != null && !token.isBlank();
 		var hasClientCredentials = clientId != null && !clientId.isBlank() && clientSecret != null && !clientSecret.isBlank();
+		var hasWebSession = webSession != null && webSession.isComplete();
+
+		if (apiVersion == TidalApiVersion.WEB || (apiVersion == TidalApiVersion.AUTO && hasWebSession)) {
+			if (hasWebSession) {
+				TidalApiClient fallback = null;
+				if (hasClientCredentials) {
+					fallback = this.createV2Client(clientId, clientSecret);
+				} else if (hasToken) {
+					fallback = this.createV1Client(token);
+				}
+				return new Clients(this.createWebClient(webSession), fallback);
+			}
+			// the session may be minted only after the node is up, so start on v2 instead of failing
+			if (hasClientCredentials) {
+				log.warn("Tidal apiVersion is web but no web session (webClientId + refreshToken) is configured, using API v2 until one is set");
+				return new Clients(this.createV2Client(clientId, clientSecret), null);
+			}
+			throw new IllegalArgumentException("Tidal apiVersion is web but no web session (webClientId + refreshToken) is configured");
+		}
 
 		switch (apiVersion) {
 			case V1:
@@ -169,9 +227,13 @@ public class TidalSourceManager extends MirroringAudioSourceManager implements H
 		return new TidalV2Client(this.httpInterfaceManager, new TidalV2TokenManager(this.httpInterfaceManager, clientId, clientSecret), this.countryCode);
 	}
 
+	private TidalApiClient createWebClient(TidalWebSession webSession) {
+		return new TidalWebClient(this.httpInterfaceManager, TidalV2TokenManager.forWebSession(this.httpInterfaceManager, webSession), this.countryCode);
+	}
+
 	/**
-	 * Runs the call against the primary client. When v2 fails for a reason unrelated to the resource
-	 * (server error, authentication, rate limit, network) and a v1 token is configured, the call is retried on v1.
+	 * Runs the call against the primary client. When it fails for a reason unrelated to the resource
+	 * (server error, authentication, rate limit, network) and a fallback is configured, the call is retried there.
 	 */
 	private <T> T call(ApiCall<T> call) throws IOException {
 		var clients = this.clients;
@@ -181,7 +243,7 @@ public class TidalSourceManager extends MirroringAudioSourceManager implements H
 			if (clients.fallback == null || !isRetryable(e)) {
 				throw e;
 			}
-			log.warn("Tidal API v2 request failed ({}), retrying with API v1", e.getMessage());
+			log.warn("Tidal API {} request failed ({}), retrying with API {}", versionName(clients.primary), e.getMessage(), versionName(clients.fallback));
 			return call.apply(clients.fallback);
 		}
 	}
@@ -265,7 +327,7 @@ public class TidalSourceManager extends MirroringAudioSourceManager implements H
 
 	private AudioItem getAlbumOrPlaylist(String itemId, ExtendedAudioPlaylist.Type type) throws IOException {
 		var collection = this.call(client -> type == ExtendedAudioPlaylist.Type.PLAYLIST
-			? client.getPlaylist(itemId, PLAYLIST_MAX_PAGE_ITEMS)
+			? client.getPlaylist(itemId, this.playlistLoadLimit)
 			: client.getAlbum(itemId, ALBUM_MAX_PAGE_ITEMS));
 		if (collection == null || collection.name == null || collection.url == null) {
 			return AudioReference.NO_TRACK;
@@ -287,7 +349,7 @@ public class TidalSourceManager extends MirroringAudioSourceManager implements H
 	}
 
 	public AudioItem getMix(String mixId) throws IOException {
-		var tracks = this.buildTracks(this.call(client -> client.getMix(mixId, PLAYLIST_MAX_PAGE_ITEMS)));
+		var tracks = this.buildTracks(this.call(client -> client.getMix(mixId, this.playlistLoadLimit)));
 		if (tracks.isEmpty()) {
 			return AudioReference.NO_TRACK;
 		}

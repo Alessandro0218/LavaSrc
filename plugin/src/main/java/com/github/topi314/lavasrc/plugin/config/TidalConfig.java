@@ -11,7 +11,11 @@ public class TidalConfig {
 	private String token;
 	private String clientId;
 	private String clientSecret;
+	private String webClientId;
+	private String webClientSecret;
+	private String refreshToken;
 	private String apiVersion = "auto";
+	private int playlistLoadLimit;
 
 	public String getCountryCode() {
 		return this.countryCode;
@@ -51,6 +55,38 @@ public class TidalConfig {
 
 	public void setClientSecret(String clientSecret) {
 		this.clientSecret = clientSecret;
+	}
+
+	public String getWebClientId() {
+		return this.webClientId;
+	}
+
+	public void setWebClientId(String webClientId) {
+		this.webClientId = webClientId;
+	}
+
+	public String getWebClientSecret() {
+		return this.webClientSecret;
+	}
+
+	public void setWebClientSecret(String webClientSecret) {
+		this.webClientSecret = webClientSecret;
+	}
+
+	public String getRefreshToken() {
+		return this.refreshToken;
+	}
+
+	public void setRefreshToken(String refreshToken) {
+		this.refreshToken = refreshToken;
+	}
+
+	public int getPlaylistLoadLimit() {
+		return this.playlistLoadLimit;
+	}
+
+	public void setPlaylistLoadLimit(int playlistLoadLimit) {
+		this.playlistLoadLimit = playlistLoadLimit;
 	}
 
 	public String getApiVersion() {

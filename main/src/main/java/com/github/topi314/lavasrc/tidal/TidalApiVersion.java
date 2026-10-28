@@ -2,7 +2,7 @@ package com.github.topi314.lavasrc.tidal;
 
 public enum TidalApiVersion {
 	/**
-	 * Use v2 when clientId and clientSecret are set, otherwise v1 when a token is set.
+	 * Use web when a web session is set, otherwise v2 when clientId and clientSecret are set, otherwise v1 when a token is set.
 	 */
 	AUTO,
 	/**
@@ -12,7 +12,11 @@ public enum TidalApiVersion {
 	/**
 	 * The official openapi.tidal.com/v2 API, authenticated with OAuth 2.0 client credentials.
 	 */
-	V2;
+	V2,
+	/**
+	 * The private api.tidal.com API used by TIDAL's own apps, authenticated as a user session (OAuth refresh token).
+	 */
+	WEB;
 
 	public static TidalApiVersion fromString(String value) {
 		if (value == null || value.isBlank()) {
@@ -23,6 +27,6 @@ public enum TidalApiVersion {
 				return version;
 			}
 		}
-		throw new IllegalArgumentException("Invalid Tidal apiVersion '" + value + "', expected one of: auto, v1, v2");
+		throw new IllegalArgumentException("Invalid Tidal apiVersion '" + value + "', expected one of: auto, v1, v2, web");
 	}
 }

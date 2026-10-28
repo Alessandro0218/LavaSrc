@@ -186,7 +186,11 @@ plugins:
       clientId: "your client id" # API v2, from https://developer.tidal.com. See https://github.com/topi314/LavaSrc#tidal
       clientSecret: "your client secret" # API v2
       token: "your tidal token" # unofficial API v1
-      apiVersion: "auto" # auto | v1 | v2
+      webClientId: "your web client id" # private API (web), the OAuth client the session belongs to
+      webClientSecret: "" # private API (web), only for clients that have one
+      refreshToken: "your refresh token" # private API (web), the user session
+      playlistLoadLimit: 750 # Maximum number of tracks loaded from a playlist or mix
+      apiVersion: "auto" # auto | v1 | v2 | web
     qobuz:
       userOauthToken : "your user oauth token" # This token is needed for authorization in the api. Guide: https://github.com/topi314/LavaSrc#qobuz
       #      appId : optional (Only pass it when you are using an old userOauthToken)
@@ -372,7 +376,10 @@ PATCH /v4/lavasrc/config
 | ?token        | string | The token for the unofficial Tidal API v1                    |
 | ?clientId     | string | The client id for the official Tidal API v2                  |
 | ?clientSecret | string | The client secret for the official Tidal API v2              |
-| ?apiVersion   | string | Which API to use: `auto`, `v1` or `v2`                       |
+| ?webClientId     | string | The OAuth client id of the web session (private API)      |
+| ?webClientSecret | string | The OAuth client secret of the web session, if it has one |
+| ?refreshToken    | string | The refresh token of the web session                      |
+| ?apiVersion   | string | Which API to use: `auto`, `v1`, `v2` or `web`                |
 
 `clientId` and `clientSecret` are only applied when both are set. The fields are applied in the order listed, and a combination that leaves the selected API without credentials is rejected.
 
@@ -821,12 +828,20 @@ searchManager.registerSearchManager(vkMusic);
 |------------------|-----------------------------------------------------|-----------------------------|
 | `v2`             | Official [TIDAL API](https://developer.tidal.com)   | `clientId` + `clientSecret` |
 | `v1`             | Unofficial `api.tidal.com/v1`                       | `token`                     |
-| `auto` (default) | `v2` if its credentials are set, otherwise `v1`     | any                         |
+| `web`            | Private `api.tidal.com` API of TIDAL's own apps     | `webClientId` + `refreshToken` (+ `webClientSecret`) |
+| `auto` (default) | `web` if its session is set, otherwise `v2`, otherwise `v1` | any                 |
 
-With both configured, `auto` retries a request on v1 when v2 fails with a server, auth, rate limit or network error.
+A request that fails with a server, auth, rate limit or network error is retried on the next configured API: `web` falls back to `v2`, or to `v1` without v2 credentials; `auto` with v2 and v1 configured falls back to `v1`.
+`web` without a session starts on `v2` when its credentials are set (the session can then be set at runtime), and fails otherwise.
 
 > [!WARNING]
-> API v1 is unofficial and may stop working at any time.
+> API v1 and the private API are unofficial and may stop working at any time. The private API acts as a TIDAL user account.
+
+Differences on web:
+
+- The session's access token is renewed in the background with the refresh token; the refresh token is never rotated.
+- Albums, playlists and mixes are fetched 100 tracks per request (the server maximum), 5 requests at a time, up to `playlistLoadLimit` tracks.
+- Search goes through `api.tidal.com/v2/search`.
 
 Differences on v2:
 

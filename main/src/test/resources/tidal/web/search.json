@@ -1,0 +1,29 @@
+{
+  "artists": {"limit": 3, "offset": 0, "totalNumberOfItems": 0, "items": []},
+  "tracks": {
+    "limit": 3,
+    "offset": 0,
+    "totalNumberOfItems": 2,
+    "items": [
+      {
+        "id": 75413016,
+        "title": "Kill Jay Z",
+        "duration": 178,
+        "isrc": "QMJMT1701229",
+        "url": "http://www.tidal.com/track/75413016",
+        "artists": [{"id": 7804, "name": "JAY Z"}],
+        "album": {"id": 75413011, "cover": "7c298a27-caec-4058-9a7b-5f34cfd2c857"}
+      },
+      {
+        "id": 75413017,
+        "title": "The Story of O.J.",
+        "duration": 231,
+        "isrc": "QMJMT1701230",
+        "url": "http://www.tidal.com/track/75413017",
+        "artists": [{"id": 7804, "name": "JAY Z"}],
+        "album": {"id": 75413011, "cover": null}
+      }
+    ]
+  },
+  "topHits": []
+}
