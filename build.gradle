@@ -40,8 +40,9 @@ def getGitVersion() {
     return [versionStr.toString().trim(), true]
 }
 
-var isMavenDefined = findProperty("MAVEN_USERNAME") != null && findProperty("MAVEN_PASSWORD") != null
-var isLavalinkMavenDefined = findProperty("LAVALINK_MAVEN_USERNAME") != null && findProperty("LAVALINK_MAVEN_PASSWORD") != null
+// truthiness, not null checks: publish.yml passes -PMAVEN_USERNAME= even when the secret is unset (as on this fork)
+var isMavenDefined = findProperty("MAVEN_USERNAME") && findProperty("MAVEN_PASSWORD")
+var isLavalinkMavenDefined = findProperty("LAVALINK_MAVEN_USERNAME") && findProperty("LAVALINK_MAVEN_PASSWORD")
 // owner/repo + token, set by .github/workflows/github-packages.yml
 var githubPackagesRepository = findProperty("GITHUB_PACKAGES_REPOSITORY")
 var githubPackagesToken = findProperty("GITHUB_PACKAGES_TOKEN")
