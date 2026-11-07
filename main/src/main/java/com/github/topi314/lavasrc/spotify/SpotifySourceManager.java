@@ -94,7 +94,7 @@ public class SpotifySourceManager extends MirroringAudioSourceManager implements
 		super(audioPlayerManager, mirroringAudioTrackResolver);
 
 		this.tokenTracker = new SpotifyTokenTracker(this, clientId, clientSecret, spDc, customTokenEndpoint);
-		this.partnerApiClient = new SpotifyPartnerApiClient(tokenTracker, httpInterfaceManager.getInterface());
+		this.partnerApiClient = new SpotifyPartnerApiClient(tokenTracker, httpInterfaceManager);
 
 		if (countryCode == null || countryCode.isEmpty()) {
 			countryCode = "US";

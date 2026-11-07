@@ -4,6 +4,7 @@ import com.github.topi314.lavasrc.ExtendedAudioPlaylist;
 import com.github.topi314.lavasrc.LavaSrcTools;
 import com.sedmelluq.discord.lavaplayer.tools.JsonBrowser;
 import com.sedmelluq.discord.lavaplayer.tools.io.HttpInterface;
+import com.sedmelluq.discord.lavaplayer.tools.io.HttpInterfaceManager;
 import com.sedmelluq.discord.lavaplayer.track.AudioItem;
 import com.sedmelluq.discord.lavaplayer.track.AudioReference;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
@@ -18,13 +19,28 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.io.InterruptedIOException;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
+/**
+ * Client for the Partner API used by Spotify's web player. Its track items carry no ISRC, so every list load
+ * backfills the missing ones from spclient metadata, one request per track, {@link #PARALLEL_ISRC_FETCHES} at a time.
+ */
 public class SpotifyPartnerApiClient {
 
 	public static final String PARTNER_API_BASE = "https://api-partner.spotify.com/pathfinder/v1/query";
@@ -32,14 +48,33 @@ public class SpotifyPartnerApiClient {
 	private static final String TRACK_METADATA_ENDPOINT_PREFIX = CLIENT_API_BASE + "metadata/4/track/";
 	private static final long PREVIEW_LENGTH = 30000;
 	private static final String USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.6998.178 Spotify/1.2.65.255 Safari/537.36";
+	static final int PARALLEL_ISRC_FETCHES = 8;
 	private static final Logger log = LoggerFactory.getLogger(SpotifyPartnerApiClient.class);
+	// shared by every client, so the metadata requests in flight to Spotify stay bounded however many lists load at once
+	private static final ExecutorService SHARED_ISRC_POOL = Executors.newFixedThreadPool(PARALLEL_ISRC_FETCHES, runnable -> {
+		var thread = new Thread(runnable, "spotify-isrc");
+		thread.setDaemon(true);
+		return thread;
+	});
 
 	private final SpotifyTokenTracker tokenTracker;
 	private final HttpInterface httpInterface;
+	@Nullable
+	private final HttpInterfaceManager httpInterfaceManager;
 
 	public SpotifyPartnerApiClient(SpotifyTokenTracker tokenTracker, HttpInterface httpInterface) {
 		this.tokenTracker = tokenTracker;
 		this.httpInterface = httpInterface;
+		this.httpInterfaceManager = null;
+	}
+
+	/**
+	 * Preferred: the ISRC backfill runs on pool threads, and an {@link HttpInterface} (its HTTP context) is not safe to share across threads.
+	 */
+	public SpotifyPartnerApiClient(SpotifyTokenTracker tokenTracker, HttpInterfaceManager httpInterfaceManager) {
+		this.tokenTracker = tokenTracker;
+		this.httpInterface = httpInterfaceManager.getInterface();
+		this.httpInterfaceManager = httpInterfaceManager;
 	}
 
 	private HttpPost createBaseRequest(SpotifyRequestPayload payload) throws IOException {
@@ -94,10 +129,7 @@ public class SpotifyPartnerApiClient {
 			return AudioReference.NO_TRACK;
 		}
 
-		var tracks = new ArrayList<AudioTrack>();
-		for (var trackData : items) {
-			tracks.add(this.parsePartnerTrack(trackData, preview, null, sourceManager));
-		}
+		var tracks = this.parseWithIsrcBackfill(items, (trackData, isrcFallback) -> this.parsePartnerTrack(trackData, preview, null, sourceManager, isrcFallback));
 
 		return tracks.isEmpty()
 			? AudioReference.NO_TRACK
@@ -145,10 +177,7 @@ public class SpotifyPartnerApiClient {
 			return AudioReference.NO_TRACK;
 		}
 
-		var tracks = new ArrayList<AudioTrack>();
-		for (var trackData : items) {
-			tracks.add(this.parsePartnerRecommendationTrack(trackData, preview, sourceManager));
-		}
+		var tracks = this.parseWithIsrcBackfill(items, (trackData, isrcFallback) -> this.parsePartnerRecommendationTrack(trackData, preview, sourceManager, isrcFallback));
 
 		if (tracks.isEmpty()) {
 			return AudioReference.NO_TRACK;
@@ -187,7 +216,7 @@ public class SpotifyPartnerApiClient {
 			return AudioReference.NO_TRACK;
 		}
 
-		return this.parsePartnerTrack(trackData, preview, null, sourceManager);
+		return this.parsePartnerTrack(trackData, preview, null, sourceManager, this::fetchIsrcViaSpClientMetadata);
 	}
 
 	public JsonBrowser getPlaylist(String uri, int offset, int limit) throws IOException {
@@ -240,10 +269,7 @@ public class SpotifyPartnerApiClient {
 
 		var playlistOwner = playlistData.get("ownerV2").get("data").get("name").text();
 		var tracksJson = this.getPlaylistTrackItems(playlistData);
-		var tracks = new ArrayList<AudioTrack>();
-		for (var item : tracksJson) {
-			tracks.add(this.parseTrackV2(item, preview, null, sourceManager));
-		}
+		var tracks = this.parseWithIsrcBackfill(tracksJson, (item, isrcFallback) -> this.parseTrackV2(item, preview, null, sourceManager, isrcFallback));
 
 		return new SpotifyAudioPlaylist(playlistName, tracks, ExtendedAudioPlaylist.Type.PLAYLIST, playlistUrl, playlistImage, playlistOwner, tracks.size());
 	}
@@ -319,14 +345,10 @@ public class SpotifyPartnerApiClient {
 			albumArtist = albumData.get("artists").get("items").index(0).get("profile").get("name").text();
 		}
 
-		var tracks = new ArrayList<AudioTrack>();
-		for (var partnerTrack : this.getAlbumTrackItems(albumData)) {
-			if (partnerTrack.get("track").isNull()) {
-				tracks.add(this.parsePartnerTrack(partnerTrack, preview, albumImage, sourceManager));
-			} else {
-				tracks.add(this.parseTrackV2(partnerTrack.get("track"), preview, albumImage, sourceManager));
-			}
-		}
+		var artwork = albumImage;
+		var tracks = this.parseWithIsrcBackfill(this.getAlbumTrackItems(albumData), (partnerTrack, isrcFallback) -> partnerTrack.get("track").isNull()
+			? this.parsePartnerTrack(partnerTrack, preview, artwork, sourceManager, isrcFallback)
+			: this.parseTrackV2(partnerTrack.get("track"), preview, artwork, sourceManager, isrcFallback));
 
 		return new SpotifyAudioPlaylist(albumName, tracks, ExtendedAudioPlaylist.Type.ALBUM, albumUrl, albumImage, albumArtist, tracks.size());
 	}
@@ -399,10 +421,7 @@ public class SpotifyPartnerApiClient {
 			artistArtworkUrl = best.get("url").text();
 		}
 
-		var tracks = new ArrayList<AudioTrack>();
-		for (var trackData : this.getArtistTopTrackItems(artistData)) {
-			tracks.add(this.parsePartnerTrack(trackData, preview, null, sourceManager));
-		}
+		var tracks = this.parseWithIsrcBackfill(this.getArtistTopTrackItems(artistData), (trackData, isrcFallback) -> this.parsePartnerTrack(trackData, preview, null, sourceManager, isrcFallback));
 
 		if (tracks.isEmpty()) {
 			return AudioReference.NO_TRACK;
@@ -419,7 +438,59 @@ public class SpotifyPartnerApiClient {
 		);
 	}
 
-	private AudioTrack parsePartnerTrack(JsonBrowser track, boolean preview, @Nullable String albumArtworkUrl, SpotifySourceManager sourceManager) {
+	/**
+	 * Parses every item, backfilling missing ISRCs in parallel: a first pass with a recording fallback collects the
+	 * track ids that need one, then the items are parsed again with the fetched ISRCs (parsing is cheap, requests are not).
+	 */
+	private List<AudioTrack> parseWithIsrcBackfill(List<JsonBrowser> items, BiFunction<JsonBrowser, Function<String, String>, AudioTrack> parser) throws IOException {
+		var missing = new LinkedHashSet<String>();
+		var tracks = new ArrayList<AudioTrack>(items.size());
+		for (var item : items) {
+			tracks.add(parser.apply(item, id -> {
+				missing.add(id);
+				return null;
+			}));
+		}
+		if (missing.isEmpty()) {
+			return tracks;
+		}
+
+		var isrcs = fetchAll(missing, this::fetchIsrcViaSpClientMetadata, SHARED_ISRC_POOL);
+		tracks.clear();
+		for (var item : items) {
+			tracks.add(parser.apply(item, isrcs::get));
+		}
+		return tracks;
+	}
+
+	/**
+	 * Runs {@code fetch} for each id on {@code pool}; ids whose fetch returns null are absent from the result.
+	 */
+	static Map<String, String> fetchAll(Collection<String> ids, Function<String, String> fetch, ExecutorService pool) throws IOException {
+		var futures = new ArrayList<Map.Entry<String, Future<String>>>(ids.size());
+		for (var id : ids) {
+			futures.add(Map.entry(id, pool.submit(() -> fetch.apply(id))));
+		}
+		var results = new HashMap<String, String>();
+		try {
+			for (var future : futures) {
+				var value = future.getValue().get();
+				if (value != null) {
+					results.put(future.getKey(), value);
+				}
+			}
+		} catch (InterruptedException e) {
+			Thread.currentThread().interrupt();
+			throw new InterruptedIOException("Interrupted while fetching Spotify ISRCs");
+		} catch (ExecutionException e) {
+			throw new IOException(e.getCause());
+		} finally {
+			futures.forEach(future -> future.getValue().cancel(true));
+		}
+		return results;
+	}
+
+	private AudioTrack parsePartnerTrack(JsonBrowser track, boolean preview, @Nullable String albumArtworkUrl, SpotifySourceManager sourceManager, Function<String, String> isrcFallback) {
 		var title = track.get("name").safeText();
 		if (title.isEmpty()) {
 			title = "Unknown Title";
@@ -484,7 +555,7 @@ public class SpotifyPartnerApiClient {
 			isrc = track.get("externalIds").get("isrc").text();
 		}
 		if (isNullOrBlank(isrc) && !isNullOrBlank(identifier)) {
-			isrc = this.fetchIsrcViaSpClientMetadata(identifier);
+			isrc = isrcFallback.apply(identifier);
 		}
 
 		String previewUrl = null;
@@ -522,7 +593,7 @@ public class SpotifyPartnerApiClient {
 		);
 	}
 
-	private AudioTrack parsePartnerRecommendationTrack(JsonBrowser track, boolean preview, SpotifySourceManager sourceManager) {
+	private AudioTrack parsePartnerRecommendationTrack(JsonBrowser track, boolean preview, SpotifySourceManager sourceManager, Function<String, String> isrcFallback) {
 		var title = track.get("name").safeText();
 		if (title.isEmpty()) {
 			title = "Unknown Title";
@@ -568,7 +639,7 @@ public class SpotifyPartnerApiClient {
 			isrc = track.get("externalIds").get("isrc").text();
 		}
 		if (isNullOrBlank(isrc) && !isNullOrBlank(identifier)) {
-			isrc = this.fetchIsrcViaSpClientMetadata(identifier);
+			isrc = isrcFallback.apply(identifier);
 		}
 
 		return new SpotifyAudioTrack(
@@ -583,7 +654,7 @@ public class SpotifyPartnerApiClient {
 		);
 	}
 
-	private AudioTrack parseTrackV2(JsonBrowser data, boolean preview, @Nullable String albumArtworkUrl, SpotifySourceManager sourceManager) {
+	private AudioTrack parseTrackV2(JsonBrowser data, boolean preview, @Nullable String albumArtworkUrl, SpotifySourceManager sourceManager, Function<String, String> isrcFallback) {
 		var trackData = data.get("itemV2").get("data");
 		if (trackData.isNull()) {
 			trackData = data;
@@ -625,7 +696,7 @@ public class SpotifyPartnerApiClient {
 			isrc = trackData.get("external_ids").get("isrc").text();
 		}
 		if (isNullOrBlank(isrc) && !isNullOrBlank(identifier)) {
-			isrc = this.fetchIsrcViaSpClientMetadata(identifier);
+			isrc = isrcFallback.apply(identifier);
 		}
 
 		return new SpotifyAudioTrack(
@@ -680,7 +751,14 @@ public class SpotifyPartnerApiClient {
 		}
 
 		try {
-			var json = LavaSrcTools.fetchResponseAsJson(this.httpInterface, request);
+			JsonBrowser json;
+			if (this.httpInterfaceManager == null) {
+				json = LavaSrcTools.fetchResponseAsJson(this.httpInterface, request);
+			} else {
+				try (var http = this.httpInterfaceManager.getInterface()) {
+					json = LavaSrcTools.fetchResponseAsJson(http, request);
+				}
+			}
 			return parseIsrcFromSpClientMetadata(json);
 		} catch (Exception e) {
 			log.debug("Failed to fetch ISRC via spclient metadata: {}", e.getMessage());
