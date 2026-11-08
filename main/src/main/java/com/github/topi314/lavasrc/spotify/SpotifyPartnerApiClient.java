@@ -80,11 +80,15 @@ public class SpotifyPartnerApiClient {
 	}
 
 	private HttpPost createBaseRequest(SpotifyRequestPayload payload) throws IOException {
+		return createBaseRequest(payload, this.tokenTracker.getAnonymousAccessToken());
+	}
+
+	private HttpPost createBaseRequest(SpotifyRequestPayload payload, String accessToken) throws IOException {
 		var request = new HttpPost(PARTNER_API_BASE);
 
 		request.setHeader("User-Agent", USER_AGENT);
 		request.setHeader("Content-Type", "application/json");
-		request.setHeader("Authorization", "Bearer " + this.tokenTracker.getAnonymousAccessToken());
+		request.setHeader("Authorization", "Bearer " + accessToken);
 		request.setHeader("Spotify-App-Version", "1.2.80.289.gd6b01cc3");
 		request.setHeader("Referer", "https://open.spotify.com/");
 
@@ -227,6 +231,20 @@ public class SpotifyPartnerApiClient {
 	}
 
 	@Nullable
+	private JsonBrowser getPlaylistAsAccount(String uri, int limit) throws IOException {
+		String accountToken;
+		try {
+			accountToken = this.tokenTracker.getAccountAccessToken();
+		} catch (RuntimeException e) {
+			// an expired or revoked sp_dc: report the playlist as unavailable, not as a node fault
+			log.warn("Spotify account token unavailable, cannot retry {} as the account", uri, e);
+			throw new FriendlyException(PLAYLIST_UNAVAILABLE, FriendlyException.Severity.COMMON, e);
+		}
+		var request = createBaseRequest(SpotifyRequestPayload.forPlaylist(uri, 0, limit), accountToken);
+		return LavaSrcTools.fetchResponseAsJson(httpInterface, request);
+	}
+
+	@Nullable
 	public JsonBrowser getPlaylistV2(String playlistId, int offset, int limit) throws IOException {
 		var json = this.getPlaylist("spotify:playlist:" + playlistId, offset, limit);
 		if (json == null) {
@@ -270,9 +288,17 @@ public class SpotifyPartnerApiClient {
 	}
 
 	public AudioItem loadPartnerPlaylist(String id, boolean preview, int limit, SpotifySourceManager sourceManager) throws IOException {
-		var json = this.getPlaylist("spotify:playlist:" + id, 0, limit);
+		var uri = "spotify:playlist:" + id;
+		var json = this.getPlaylist(uri, 0, limit);
 		if (json == null) {
 			return AudioReference.NO_TRACK;
+		}
+		// "Made for You" mixes are NotFound to an anonymous token but load for any logged-in account (spDc)
+		if (isNotFound(json, "playlistV2") && this.tokenTracker.hasValidAccountCredentials()) {
+			json = this.getPlaylistAsAccount(uri, limit);
+			if (json == null) {
+				return AudioReference.NO_TRACK;
+			}
 		}
 		// v1 cannot load what the Partner API calls NotFound either, so falling back would only hide why
 		if (isNotFound(json, "playlistV2")) {
