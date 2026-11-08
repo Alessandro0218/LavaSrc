@@ -1,5 +1,6 @@
 package com.github.topi314.lavasrc.spotify;
 
+import com.sedmelluq.discord.lavaplayer.tools.JsonBrowser;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
@@ -50,6 +51,31 @@ class SpotifyPartnerApiClientTest {
 
 		assertEquals(4, isrcs.size());
 		assertEquals(4, maxInFlight.get());
+	}
+
+	@Test
+	void unionIsTheMemberAsked() throws IOException {
+		var json = JsonBrowser.parse("{\"data\":{\"playlistV2\":{\"__typename\":\"Playlist\",\"name\":\"Mix\"}}}");
+
+		assertEquals("Mix", SpotifyPartnerApiClient.union(json, "playlistV2", "Playlist").get("name").text());
+		assertFalse(SpotifyPartnerApiClient.isNotFound(json, "playlistV2"));
+	}
+
+	@Test
+	void notFoundUnionIsNoPlaylist() throws IOException {
+		// what Spotify returns an anonymous token for a "Made for You" mix (37i9dQZEVX...)
+		var json = JsonBrowser.parse("{\"data\":{\"playlistV2\":{\"__typename\":\"NotFound\",\"message\":\"Object with uri 'spotify:playlist:37i9dQZEVXd6wBgbQb9SHn' not found\"}}}");
+
+		assertNull(SpotifyPartnerApiClient.union(json, "playlistV2", "Playlist"));
+		assertTrue(SpotifyPartnerApiClient.isNotFound(json, "playlistV2"));
+	}
+
+	@Test
+	void missingUnionIsNull() throws IOException {
+		var json = JsonBrowser.parse("{\"data\":{\"albumUnion\":null}}");
+
+		assertNull(SpotifyPartnerApiClient.union(json, "albumUnion", "Album"));
+		assertFalse(SpotifyPartnerApiClient.isNotFound(json, "albumUnion"));
 	}
 
 	@Test

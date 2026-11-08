@@ -2,6 +2,7 @@ package com.github.topi314.lavasrc.spotify;
 
 import com.github.topi314.lavasrc.ExtendedAudioPlaylist;
 import com.github.topi314.lavasrc.LavaSrcTools;
+import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import com.sedmelluq.discord.lavaplayer.tools.JsonBrowser;
 import com.sedmelluq.discord.lavaplayer.tools.io.HttpInterface;
 import com.sedmelluq.discord.lavaplayer.tools.io.HttpInterfaceManager;
@@ -49,6 +50,7 @@ public class SpotifyPartnerApiClient {
 	private static final long PREVIEW_LENGTH = 30000;
 	private static final String USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.6998.178 Spotify/1.2.65.255 Safari/537.36";
 	static final int PARALLEL_ISRC_FETCHES = 8;
+	public static final String PLAYLIST_UNAVAILABLE = "This Spotify playlist is personalized or private and cannot be loaded.";
 	private static final Logger log = LoggerFactory.getLogger(SpotifyPartnerApiClient.class);
 	// shared by every client, so the metadata requests in flight to Spotify stay bounded however many lists load at once
 	private static final ExecutorService SHARED_ISRC_POOL = Executors.newFixedThreadPool(PARALLEL_ISRC_FETCHES, runnable -> {
@@ -231,8 +233,25 @@ public class SpotifyPartnerApiClient {
 			return null;
 		}
 
-		var playlistV2 = json.get("data").get("playlistV2");
-		return playlistV2.isNull() ? null : playlistV2;
+		return union(json, "playlistV2", "Playlist");
+	}
+
+	/**
+	 * The {@code field} union of a Partner API response, or null when it is missing or another member: Spotify answers
+	 * what it will not show (deleted or private items, "Made for You" mixes to an anonymous token) with a NotFound union.
+	 */
+	@Nullable
+	static JsonBrowser union(JsonBrowser json, String field, String typename) {
+		var union = json.get("data").get(field);
+		if (union.isNull()) {
+			return null;
+		}
+		var actual = union.get("__typename").text();
+		return actual == null || actual.equals(typename) ? union : null;
+	}
+
+	static boolean isNotFound(JsonBrowser json, String field) {
+		return "NotFound".equals(json.get("data").get(field).get("__typename").text());
 	}
 
 	public List<JsonBrowser> getPlaylistTrackItems(@Nullable JsonBrowser playlistV2) {
@@ -251,7 +270,15 @@ public class SpotifyPartnerApiClient {
 	}
 
 	public AudioItem loadPartnerPlaylist(String id, boolean preview, int limit, SpotifySourceManager sourceManager) throws IOException {
-		var playlistData = this.getPlaylistV2(id, 0, limit);
+		var json = this.getPlaylist("spotify:playlist:" + id, 0, limit);
+		if (json == null) {
+			return AudioReference.NO_TRACK;
+		}
+		// v1 cannot load what the Partner API calls NotFound either, so falling back would only hide why
+		if (isNotFound(json, "playlistV2")) {
+			throw new FriendlyException(PLAYLIST_UNAVAILABLE, FriendlyException.Severity.COMMON, null);
+		}
+		var playlistData = union(json, "playlistV2", "Playlist");
 		if (playlistData == null) {
 			return AudioReference.NO_TRACK;
 		}
@@ -286,8 +313,7 @@ public class SpotifyPartnerApiClient {
 			return null;
 		}
 
-		var albumUnion = json.get("data").get("albumUnion");
-		return albumUnion.isNull() ? null : albumUnion;
+		return union(json, "albumUnion", "Album");
 	}
 
 	public List<JsonBrowser> getAlbumTrackItems(@Nullable JsonBrowser albumUnion) {
