@@ -103,6 +103,7 @@ public class LavaSrcPlugin implements AudioPlayerManagerConfiguration, SearchMan
 		}
 		if (sourcesConfig.isDeezer() || lyricsSourcesConfig.isDeezer()) {
 			this.deezer = new DeezerAudioSourceManager(deezerConfig.getMasterDecryptionKey(), deezerConfig.getArl(), deezerConfig.getFormats());
+			proxyConfigurationService.configure(this.deezer, deezerConfig.getProxy(), deezerConfig.getProxyHosts());
 		}
 
 		if (sourcesConfig.isYandexMusic() || lyricsSourcesConfig.isYandexMusic()) {
